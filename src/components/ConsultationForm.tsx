@@ -2,18 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import {
-  Sparkles,
-  Calendar,
-  Clock,
-  MapPin,
-  Phone,
-  User,
-  Mail,
-  ArrowRight,
-  Compass,
-  MessageSquare,
-} from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
 import { playHarmonicChime } from "@/lib/audio";
 import { consultationsCatalog } from "@/lib/data";
 
@@ -154,10 +143,7 @@ export default function ConsultationForm({ onShowToast }: ConsultationFormProps)
         {/* Full Name (Mandatory) */}
         <div>
           <label className="block text-slate-800 mb-0.5 font-semibold flex items-center justify-between">
-            <span className="flex items-center gap-1">
-              <User className="w-3 h-3 text-amber-600" />
-              <span>Full Name</span>
-            </span>
+            <span>Full Name</span>
             <span className="text-amber-600 font-bold text-xs">*</span>
           </label>
           <input
@@ -174,10 +160,7 @@ export default function ConsultationForm({ onShowToast }: ConsultationFormProps)
         {/* Dropdown 1: Select Consultation Category / Service (Mandatory) */}
         <div>
           <label className="block text-slate-800 mb-0.5 font-semibold flex items-center justify-between">
-            <span className="flex items-center gap-1">
-              <Compass className="w-3 h-3 text-amber-600" />
-              <span>Select Consultation Service</span>
-            </span>
+            <span>Select Consultation Service</span>
             <span className="text-amber-600 font-bold text-xs">*</span>
           </label>
           <select
@@ -201,10 +184,7 @@ export default function ConsultationForm({ onShowToast }: ConsultationFormProps)
         {/* Dropdown 2: Select Consultation Mode & Fee (Mandatory) */}
         <div>
           <label className="block text-slate-800 mb-0.5 font-semibold flex items-center justify-between">
-            <span className="flex items-center gap-1">
-              <MessageSquare className="w-3 h-3 text-amber-600" />
-              <span>Consultation Mode &amp; Fee</span>
-            </span>
+            <span>Consultation Mode &amp; Fee</span>
             <span className="text-amber-600 font-bold text-xs">*</span>
           </label>
           <select
@@ -229,10 +209,7 @@ export default function ConsultationForm({ onShowToast }: ConsultationFormProps)
         <div className="grid grid-cols-2 gap-2">
           <div>
             <label className="block text-slate-800 mb-0.5 font-semibold flex items-center justify-between">
-              <span className="flex items-center gap-1">
-                <Calendar className="w-3 h-3 text-amber-600" />
-                <span>Date of Birth</span>
-              </span>
+              <span>Date of Birth</span>
               <span className="text-amber-600 font-bold text-xs">*</span>
             </label>
             <input
@@ -246,10 +223,7 @@ export default function ConsultationForm({ onShowToast }: ConsultationFormProps)
           </div>
           <div>
             <label className="block text-slate-800 mb-0.5 font-semibold flex items-center justify-between">
-              <span className="flex items-center gap-1">
-                <Clock className="w-3 h-3 text-amber-600" />
-                <span>Time of Birth</span>
-              </span>
+              <span>Time of Birth</span>
               <span className="text-amber-600 font-bold text-xs">*</span>
             </label>
             <input
@@ -267,10 +241,7 @@ export default function ConsultationForm({ onShowToast }: ConsultationFormProps)
         <div className="grid grid-cols-2 gap-2">
           <div>
             <label className="block text-slate-800 mb-0.5 font-semibold flex items-center justify-between">
-              <span className="flex items-center gap-1">
-                <MapPin className="w-3 h-3 text-amber-600" />
-                <span>Place of Birth</span>
-              </span>
+              <span>Place of Birth</span>
               <span className="text-amber-600 font-bold text-xs">*</span>
             </label>
             <input
@@ -285,10 +256,7 @@ export default function ConsultationForm({ onShowToast }: ConsultationFormProps)
           </div>
           <div>
             <label className="block text-slate-800 mb-0.5 font-semibold flex items-center justify-between">
-              <span className="flex items-center gap-1">
-                <Phone className="w-3 h-3 text-amber-600" />
-                <span>Phone / WhatsApp</span>
-              </span>
+              <span>Phone / WhatsApp</span>
               <span className="text-amber-600 font-bold text-xs">*</span>
             </label>
             <input
@@ -307,10 +275,7 @@ export default function ConsultationForm({ onShowToast }: ConsultationFormProps)
         <div className="grid grid-cols-2 gap-2">
           <div>
             <label className="block text-slate-800 mb-0.5 font-semibold flex items-center justify-between">
-              <span className="flex items-center gap-1">
-                <Calendar className="w-3 h-3 text-amber-600" />
-                <span>Appointment Date</span>
-              </span>
+              <span>Appointment Date</span>
               <span className="text-amber-600 font-bold text-xs">*</span>
             </label>
             <input
@@ -324,10 +289,7 @@ export default function ConsultationForm({ onShowToast }: ConsultationFormProps)
           </div>
           <div>
             <label className="block text-slate-800 mb-0.5 font-semibold flex items-center justify-between">
-              <span className="flex items-center gap-1">
-                <Clock className="w-3 h-3 text-amber-600" />
-                <span>Appointment Time</span>
-              </span>
+              <span>Appointment Time</span>
               <span className="text-amber-600 font-bold text-xs">*</span>
             </label>
             <input
@@ -344,11 +306,10 @@ export default function ConsultationForm({ onShowToast }: ConsultationFormProps)
         {/* Email Address (Optional) */}
         <div>
           <label className="block text-slate-800 mb-0.5 font-semibold flex items-center justify-between">
-            <span className="flex items-center gap-1">
-              <Mail className="w-3 h-3 text-slate-400" />
+            <div>
               <span>Email Address</span>
               <span className="text-[10px] text-slate-400 font-normal ml-1">(Optional)</span>
-            </span>
+            </div>
           </label>
           <input
             type="email"
