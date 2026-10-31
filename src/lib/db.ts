@@ -10,8 +10,9 @@ const { Pool } = pg;
 try {
   const resolver = new dnsPromises.Resolver();
   resolver.setServers(["8.8.8.8", "1.1.1.1"]);
-  const originalLookup = dns.lookup;
-  dns.lookup = function (hostname, options, callback) {
+  const dnsAny = dns as any;
+  const originalLookup = dnsAny.lookup;
+  dnsAny.lookup = function (hostname: string, options: any, callback: any) {
     const cb = typeof options === "function" ? options : callback;
     const opt = typeof options === "object" ? options : {};
 
@@ -19,17 +20,17 @@ try {
       .resolve4(hostname)
       .then((addresses) => {
         if (addresses && addresses.length > 0) {
-          if (opt.all) {
-            cb(null, addresses.map((addr) => ({ address: addr, family: 4 })));
+          if (opt && opt.all) {
+            cb(null, addresses.map((addr: string) => ({ address: addr, family: 4 })));
           } else {
             cb(null, addresses[0], 4);
           }
         } else {
-          originalLookup(hostname, options, callback);
+          originalLookup.call(dns, hostname, options, callback);
         }
       })
       .catch(() => {
-        originalLookup(hostname, options, callback);
+        originalLookup.call(dns, hostname, options, callback);
       });
   };
 } catch {
