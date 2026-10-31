@@ -1,0 +1,2375 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>astrohealer4U — Only I Know What You Are Hiding 💫</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            cinzel: ['"Cinzel"', 'serif'],
+            cinzelDeco: ['"Cinzel Decorative"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            cosmic: {
+              950: 'var(--bg-cosmic-950, #040209)',
+              900: 'var(--bg-cosmic-900, #0a0718)',
+              850: 'var(--bg-cosmic-850, #110d29)',
+              800: 'var(--bg-cosmic-800, #171238)',
+              700: '#251c59',
+            },
+            celestial: {
+              gold: 'var(--color-accent-gold, #f6cf7a)',
+              brightGold: '#ffe072',
+              purple: '#ab57f7',
+              amethyst: '#d28eff',
+              teal: '#4cc9f0',
+              glow: 'rgba(246, 207, 122, 0.28)'
+            }
+          },
+          animation: {
+            'spin-slow': 'spin 45s linear infinite',
+            'spin-reverse-slow': 'spin-reverse 50s linear infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+            'shimmer': 'shimmer 4s ease-in-out infinite',
+          },
+          keyframes: {
+            'spin-reverse': {
+              '0%': { transform: 'rotate(360deg)' },
+              '100%': { transform: 'rotate(0deg)' },
+            },
+            'float': {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-12px)' },
+            },
+            'pulseGlow': {
+              '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
+              '50%': { opacity: '0.8', transform: 'scale(1.05)' },
+            },
+            'shimmer': {
+              '0%, 100%': { opacity: '0.8', filter: 'brightness(1)' },
+              '50%': { opacity: '1', filter: 'brightness(1.28) drop-shadow(0 0 16px rgba(246,207,122,0.6))' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Dynamic Theme Variables */
+    :root {
+      --bg-cosmic-950: #040209;
+      --bg-cosmic-900: #090616;
+      --bg-cosmic-850: #100b26;
+      --bg-cosmic-800: #17113a;
+      --color-accent-gold: #f6cf7a;
+      --theme-glow-1: rgba(147, 51, 234, 0.25);
+      --theme-glow-2: rgba(246, 207, 122, 0.18);
+      --theme-border: rgba(246, 207, 122, 0.16);
+    }
+
+    [data-theme="nebula"] {
+      --bg-cosmic-950: #020512;
+      --bg-cosmic-900: #050b21;
+      --bg-cosmic-850: #091338;
+      --bg-cosmic-800: #0e1c4e;
+      --color-accent-gold: #38bdf8;
+      --theme-glow-1: rgba(56, 189, 248, 0.28);
+      --theme-glow-2: rgba(168, 85, 247, 0.22);
+      --theme-border: rgba(56, 189, 248, 0.22);
+    }
+
+    [data-theme="solstice"] {
+      --bg-cosmic-950: #0a0604;
+      --bg-cosmic-900: #140c06;
+      --bg-cosmic-850: #1f130a;
+      --bg-cosmic-800: #2b1a0d;
+      --color-accent-gold: #fbbf24;
+      --theme-glow-1: rgba(251, 191, 36, 0.25);
+      --theme-glow-2: rgba(234, 88, 12, 0.2);
+      --theme-border: rgba(251, 191, 36, 0.22);
+    }
+
+    /* Custom Scrollbar & Aesthetics */
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #05030b;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2a2050;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--color-accent-gold);
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFFBEB 0%, #F6CF7A 45%, #D49E2E 85%, #92640A 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .purple-gradient-text {
+      background: linear-gradient(135deg, #f3e8ff 0%, #d8b4fe 40%, #a855f7 75%, #6b21a8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .glass-panel {
+      background: rgba(16, 11, 38, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--theme-border);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+    .glass-card {
+      background: radial-gradient(120% 120% at 50% 0%, rgba(35, 26, 74, 0.55) 0%, rgba(11, 8, 26, 0.75) 100%);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18), transparent 60%, rgba(246, 207, 122, 0.2));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .glass-card:hover {
+      border-color: rgba(246, 207, 122, 0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px -12px rgba(246, 207, 122, 0.25), 0 0 24px -4px var(--theme-glow-1);
+    }
+    /* 3D Oracle Card Flip */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+    /* Constellation background */
+    .bg-nebula {
+      background-image: 
+        radial-gradient(circle at 18% 22%, var(--theme-glow-1) 0%, transparent 48%),
+        radial-gradient(circle at 82% 78%, var(--theme-glow-2) 0%, transparent 44%),
+        radial-gradient(circle at 50% 50%, rgba(76, 201, 240, 0.07) 0%, transparent 55%);
+    }
+
+    /* Cosmic theme button badge */
+    .theme-active-ring {
+      box-shadow: 0 0 0 2px var(--color-accent-gold), 0 0 14px var(--color-accent-gold);
+    }
+  </style>
+</head>
+<body class="bg-cosmic-950 text-slate-200 font-sans selection:bg-celestial-purple selection:text-white min-h-screen relative overflow-x-hidden transition-colors duration-500">
+
+  <!-- Interactive Canvas Starfield Background -->
+  <canvas id="starfield" class="fixed inset-0 pointer-events-none z-0 opacity-75"></canvas>
+
+  <!-- Cosmic Notification Banner -->
+  <aside aria-label="Announcement" class="relative z-50 bg-gradient-to-r from-purple-950/80 via-amber-950/60 to-purple-950/80 border-b border-celestial-gold/20 py-2 px-4 text-xs tracking-wider text-center flex items-center justify-center gap-2">
+    <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+    <span class="text-amber-200 font-medium">✦ Garima Verma is accepting 1-on-1 Natal Blueprint Consultations for this month</span>
+    <a href="#all-consultations" class="underline decoration-amber-400 font-bold hover:text-white transition ml-1">Reserve Slot →</a>
+  </aside>
+
+  <!-- Sticky Top Navigation -->
+  <header class="sticky top-0 z-40 w-full glass-panel border-b border-celestial-gold/15 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo & Brand Statement -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="relative w-11 h-11 rounded-full bg-gradient-to-br from-celestial-gold via-celestial-purple to-cosmic-900 p-[1.5px] shadow-[0_0_20px_rgba(246,207,122,0.4)] group-hover:scale-105 transition-transform duration-300">
+          <div class="w-full h-full rounded-full bg-cosmic-950 flex items-center justify-center">
+            <i data-lucide="sparkles" class="w-5 h-5 text-celestial-gold animate-pulse"></i>
+          </div>
+        </div>
+        <div>
+          <div class="font-cinzel font-bold text-xl md:text-2xl tracking-wider text-white flex items-center gap-1.5">
+            astrohealer<span class="text-celestial-gold font-cinzelDeco">4U</span>
+          </div>
+          <p class="text-[10px] tracking-widest text-slate-400 uppercase -mt-1 font-medium font-cinzel">
+            Only I Know What You Are Hiding 💫
+          </p>
+        </div>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium tracking-wide">
+        <a href="#about" class="text-slate-300 hover:text-celestial-gold transition">About Garima</a>
+        <a href="#all-consultations" class="text-slate-300 hover:text-celestial-gold transition">Consultations</a>
+        <a href="#oracle" class="text-slate-300 hover:text-celestial-gold transition">Tarot Oracle</a>
+        <a href="#zodiac" class="text-slate-300 hover:text-celestial-gold transition">Zodiac Transit</a>
+        <a href="#blueprint" class="text-slate-300 hover:text-celestial-gold transition">Kundli Engine</a>
+        <a href="#shop" class="text-slate-300 hover:text-celestial-gold transition">Apothecary</a>
+      </nav>
+
+      <!-- Action Buttons & Audio Ambient & Theme Selector -->
+      <div class="flex items-center gap-2.5">
+        
+        <!-- Celestial Theme Palette Switcher -->
+        <div class="hidden sm:flex items-center gap-1 bg-cosmic-900/90 border border-white/10 p-1 rounded-full">
+          <button onclick="setTheme('default', this)" title="Midnight Stardust" class="theme-btn theme-active-ring w-6 h-6 rounded-full bg-gradient-to-tr from-purple-800 to-amber-400 transition" aria-label="Midnight Stardust Theme"></button>
+          <button onclick="setTheme('nebula', this)" title="Ethereal Nebula" class="theme-btn w-6 h-6 rounded-full bg-gradient-to-tr from-cyan-600 to-indigo-500 transition" aria-label="Ethereal Nebula Theme"></button>
+          <button onclick="setTheme('solstice', this)" title="Solstice Gold" class="theme-btn w-6 h-6 rounded-full bg-gradient-to-tr from-amber-500 to-orange-600 transition" aria-label="Solstice Gold Theme"></button>
+        </div>
+
+        <!-- Ambient Sound Generator Toggle -->
+        <button id="soundToggleBtn" onclick="toggleCelestialAudio()" title="Play Celestial Tibetan Meditation Chime" class="p-2.5 rounded-full border border-celestial-gold/30 hover:border-celestial-gold bg-cosmic-900 text-celestial-gold transition duration-200 relative group">
+          <i data-lucide="volume-x" id="soundIcon" class="w-4 h-4"></i>
+          <span class="sr-only">Toggle Ambient Harmony</span>
+          <span class="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-cosmic-900 border border-celestial-gold/40 text-[10px] text-amber-200 px-2 py-0.5 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">
+            Ambient Harmony
+          </span>
+        </button>
+
+        <a href="#all-consultations" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-cosmic-950 font-bold text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(246,207,122,0.4)] hover:shadow-[0_0_30px_rgba(246,207,122,0.7)] hover:scale-[1.02] transition-all">
+          <span>Book Reading</span>
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+        </a>
+
+        <!-- Mobile Menu Hamburger -->
+        <button onclick="toggleMobileNav()" class="md:hidden p-2 text-slate-300 hover:text-celestial-gold">
+          <i data-lucide="menu" id="menuIcon" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileNav" class="hidden md:hidden glass-panel border-t border-celestial-gold/15 px-6 py-6 space-y-4">
+      <div class="flex items-center justify-between pb-3 border-b border-white/10">
+        <span class="text-xs uppercase tracking-widest text-slate-400 font-cinzel">Cosmic Theme</span>
+        <div class="flex items-center gap-2">
+          <button onclick="setTheme('default', this)" class="w-6 h-6 rounded-full bg-gradient-to-tr from-purple-800 to-amber-400"></button>
+          <button onclick="setTheme('nebula', this)" class="w-6 h-6 rounded-full bg-gradient-to-tr from-cyan-600 to-indigo-500"></button>
+          <button onclick="setTheme('solstice', this)" class="w-6 h-6 rounded-full bg-gradient-to-tr from-amber-500 to-orange-600"></button>
+        </div>
+      </div>
+      <a href="#about" onclick="toggleMobileNav()" class="block text-base font-medium text-slate-200 hover:text-celestial-gold">About Garima</a>
+      <a href="#all-consultations" onclick="toggleMobileNav()" class="block text-base font-medium text-slate-200 hover:text-celestial-gold">Consultations (10)</a>
+      <a href="#oracle" onclick="toggleMobileNav()" class="block text-base font-medium text-slate-200 hover:text-celestial-gold">Daily Cosmic Oracle</a>
+      <a href="#zodiac" onclick="toggleMobileNav()" class="block text-base font-medium text-slate-200 hover:text-celestial-gold">Zodiac Signs</a>
+      <a href="#blueprint" onclick="toggleMobileNav()" class="block text-base font-medium text-slate-200 hover:text-celestial-gold">Kundli Calculator</a>
+      <a href="#shop" onclick="toggleMobileNav()" class="block text-base font-medium text-slate-200 hover:text-celestial-gold">Sacred Apothecary</a>
+      <div class="pt-2">
+        <a href="#all-consultations" onclick="toggleMobileNav()" class="w-full text-center block py-3 rounded-xl bg-celestial-gold text-cosmic-950 font-bold text-sm tracking-wide">
+          Book 1-on-1 Guidance
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <main>
+  <section class="relative min-h-[90vh] flex items-center justify-center pt-8 pb-20 px-4 sm:px-6 lg:px-8 bg-nebula overflow-hidden">
+    <!-- Astrological Geometric Rings Visual Overlay -->
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+      <div class="w-[500px] sm:w-[700px] h-[500px] sm:h-[700px] rounded-full border border-celestial-gold/40 animate-spin-slow"></div>
+      <div class="absolute w-[360px] sm:w-[520px] h-[360px] sm:h-[520px] rounded-full border border-dashed border-celestial-amethyst/50 animate-spin-reverse-slow"></div>
+      <div class="absolute w-[220px] sm:w-[320px] h-[220px] sm:h-[320px] rounded-full border border-celestial-gold/30"></div>
+    </div>
+
+    <div class="max-w-5xl mx-auto text-center relative z-10">
+      <!-- Tag / Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel border border-celestial-gold/40 text-celestial-gold text-xs uppercase tracking-widest mb-6 animate-pulse">
+        <i data-lucide="moon" class="w-3.5 h-3.5"></i>
+        <span>✦ Fear-Free & Pure Logical Vedic Alchemy ✦</span>
+      </div>
+
+      <!-- Main Headline with signature tagline -->
+      <h1 class="font-cinzel text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-tight mb-6">
+        <span class="gold-gradient-text block">“Only I Know What</span>
+        <span class="purple-gradient-text">You Are Hiding” 💫</span>
+      </h1>
+
+      <p class="max-w-2xl mx-auto text-base sm:text-xl text-slate-300 font-light leading-relaxed mb-8">
+        No scare tactics. No endless superstitions. We decode your <span class="text-amber-300 font-medium">8th house secrets</span>, karmic debts, and hidden celestial roadblocks to guide your career, marriage, and soul path into effortless alignment.
+      </p>
+
+      <!-- CTA Hub -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+        <a href="#consultations" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-cosmic-950 font-extrabold text-sm tracking-wider uppercase shadow-[0_0_25px_rgba(243,201,106,0.4)] hover:shadow-[0_0_35px_rgba(243,201,106,0.7)] hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
+          <i data-lucide="sparkle" class="w-4 h-4 text-cosmic-950"></i>
+          <span>Begin Soul Reading</span>
+        </a>
+        <a href="#blueprint" class="w-full sm:w-auto px-8 py-4 rounded-full glass-panel border border-white/20 text-white font-medium text-sm tracking-wider hover:border-celestial-gold hover:text-celestial-gold transition-all duration-300 flex items-center justify-center gap-2">
+          <i data-lucide="compass" class="w-4 h-4 text-celestial-purple"></i>
+          <span>Generate Natal Matrix</span>
+        </a>
+      </div>
+
+      <!-- Quick Social Proof / Authority Counters -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        <div class="p-4 rounded-2xl glass-card text-center">
+          <div class="font-cinzel text-2xl sm:text-3xl font-bold gold-gradient-text">12,500+</div>
+          <p class="text-xs text-slate-400 uppercase tracking-wider mt-1">Charts Calibrated</p>
+        </div>
+        <div class="p-4 rounded-2xl glass-card text-center">
+          <div class="font-cinzel text-2xl sm:text-3xl font-bold text-amber-300 flex items-center justify-center gap-1">
+            4.96 <span class="text-lg">★</span>
+          </div>
+          <p class="text-xs text-slate-400 uppercase tracking-wider mt-1">Verified Client Praise</p>
+        </div>
+        <div class="p-4 rounded-2xl glass-card text-center">
+          <div class="font-cinzel text-2xl sm:text-3xl font-bold purple-gradient-text">100%</div>
+          <p class="text-xs text-slate-400 uppercase tracking-wider mt-1">Zero-Fear Ethics</p>
+        </div>
+        <div class="p-4 rounded-2xl glass-card text-center">
+          <div class="font-cinzel text-2xl sm:text-3xl font-bold text-emerald-400">35+</div>
+          <p class="text-xs text-slate-400 uppercase tracking-wider mt-1">Countries Served</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PAIN POINTS / "WHAT ARE YOU HIDING?" SECTION -->
+  <section class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-y border-white/5 bg-cosmic-900/40 relative">
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs font-semibold uppercase tracking-widest text-celestial-gold mb-3 flex items-center justify-center gap-2">
+          <i data-lucide="key" class="w-4 h-4"></i>
+          <span>Unearthing What Remains Unspoken</span>
+        </h2>
+        <h3 class="font-cinzel text-3xl sm:text-4xl font-bold text-white mb-4">
+          Are These Invisible Walls Blocking Your Destiny?
+        </h3>
+        <p class="text-slate-400 text-sm sm:text-base">
+          Astrology at astrohealer4U is not about fatalistic fortune-telling. It is about diagnosing where energetic friction is suffocating your potential.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="p-8 rounded-3xl glass-card relative group hover:-translate-y-1 transition duration-300">
+          <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-celestial-gold mb-6 group-hover:scale-110 transition">
+            <i data-lucide="heart-crack" class="w-6 h-6"></i>
+          </div>
+          <h4 class="font-cinzel text-xl font-bold text-white mb-2">Shadi Me Rukawat Ya Delay?</h4>
+          <p class="text-slate-300 text-sm leading-relaxed mb-4">
+            Stuck in endless match-making dilemmas, repetitive breakups, or sudden marital turbulence? We analyze your 7th house, Shukra & Mangal aspects to reveal precise timing and clear remedies.
+          </p>
+          <span class="text-xs font-semibold text-celestial-gold flex items-center gap-1 group-hover:translate-x-1 transition">
+            Marriage & Matchmaking Consultations →
+          </span>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="p-8 rounded-3xl glass-card relative group hover:-translate-y-1 transition duration-300">
+          <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-celestial-amethyst mb-6 group-hover:scale-110 transition">
+            <i data-lucide="plane-takeoff" class="w-6 h-6"></i>
+          </div>
+          <h4 class="font-cinzel text-xl font-bold text-white mb-2">Foreign PR Ya Career Stagnation?</h4>
+          <p class="text-slate-300 text-sm leading-relaxed mb-4">
+            Visa delays, constant job switches without growth, or feeling underpaid despite extraordinary effort? Your 9th and 12th houses hold the coordinates for cross-border success.
+          </p>
+          <span class="text-xs font-semibold text-celestial-amethyst flex items-center gap-1 group-hover:translate-x-1 transition">
+            Career & Relocation Blueprint →
+          </span>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="p-8 rounded-3xl glass-card relative group hover:-translate-y-1 transition duration-300">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition">
+            <i data-lucide="coins" class="w-6 h-6"></i>
+          </div>
+          <h4 class="font-cinzel text-xl font-bold text-white mb-2">Sudden Losses & 8th House Karmas</h4>
+          <p class="text-slate-300 text-sm leading-relaxed mb-4">
+            Unexplained financial drainage, generational ancestral blocks (Pitru Dosha), or emotional shadows you share with no one? We unlock the esoteric mysteries holding your wealth back.
+          </p>
+          <span class="text-xs font-semibold text-emerald-400 flex items-center gap-1 group-hover:translate-x-1 transition">
+            Karmic Cleansing & Remedies →
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ASTROHEALER4U OFFICIAL CONSULTATIONS MATRIX (FROM ASTROHEALER4U.IN/CONSULTATION) -->
+  <section id="all-consultations" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-cosmic-950 relative overflow-hidden border-b border-celestial-gold/15">
+    
+    <!-- Background Glows -->
+    <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-purple-900/20 blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-amber-500/15 blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+      
+      <!-- Astro Guidance Live Marquee Strip from astrohealer4u.in -->
+      <div class="mb-12 rounded-2xl border border-celestial-gold/25 bg-gradient-to-r from-purple-950/60 via-cosmic-900/90 to-amber-950/60 p-3 sm:p-4 overflow-hidden relative shadow-lg">
+        <div class="flex items-center gap-3">
+          <span class="shrink-0 text-xs font-extrabold uppercase tracking-widest px-3 py-1 rounded-full bg-celestial-gold text-cosmic-950 flex items-center gap-1.5 shadow">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span>Astro Guidance</span>
+          </span>
+          <div class="overflow-hidden whitespace-nowrap w-full">
+            <div class="inline-block animate-[marquee_28s_linear_infinite] text-xs font-medium text-amber-200 space-x-6">
+              <span>✦ Shadi me rukawat hai?</span>
+              <span>✦ Foreign PR me dikkat?</span>
+              <span>✦ Paiso ki dikkat?</span>
+              <span>✦ Pregnancy me dikkat?</span>
+              <span>✦ Business ya Job Career me confusion?</span>
+              <span>✦ Shadi me rukawat hai?</span>
+              <span>✦ Foreign PR me dikkat?</span>
+              <span>✦ Paiso ki dikkat?</span>
+              <span>✦ Pregnancy me dikkat?</span>
+              <span>✦ Business ya Job Career me confusion?</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Heading -->
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span class="text-xs font-semibold tracking-widest text-celestial-gold uppercase flex items-center justify-center gap-2 mb-2">
+          <i data-lucide="compass" class="w-4 h-4"></i>
+          <span>Vedic Jyotish Consultation Registry</span>
+        </span>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-extrabold text-white mb-4">
+          All 10 Specialized Consultations
+        </h2>
+        <p class="text-slate-300 text-xs sm:text-base leading-relaxed">
+          Select from our full catalog of consultations given on <span class="text-celestial-gold font-medium">astrohealer4u.in</span>. Every reading is personally conducted by <strong>Garima Verma</strong> with pure logical Vedic alignment and pragmatic remedies.
+        </p>
+
+        <!-- Category Filter Pills -->
+        <div class="flex items-center justify-center gap-2 mt-8 flex-wrap">
+          <button onclick="filterConsultations('all', this)" class="cons-filter active px-4 py-2 rounded-full text-xs font-semibold transition bg-celestial-gold text-cosmic-950 shadow-md">
+            All Consultations (10)
+          </button>
+          <button onclick="filterConsultations('core', this)" class="cons-filter px-4 py-2 rounded-full text-xs font-semibold transition glass-panel text-slate-300 hover:text-white border border-white/10">
+            Core Destiny & Kundli
+          </button>
+          <button onclick="filterConsultations('relationships', this)" class="cons-filter px-4 py-2 rounded-full text-xs font-semibold transition glass-panel text-slate-300 hover:text-white border border-white/10">
+            Marriage & Family
+          </button>
+          <button onclick="filterConsultations('career', this)" class="cons-filter px-4 py-2 rounded-full text-xs font-semibold transition glass-panel text-slate-300 hover:text-white border border-white/10">
+            Career, Foreign & Wealth
+          </button>
+          <button onclick="filterConsultations('healing', this)" class="cons-filter px-4 py-2 rounded-full text-xs font-semibold transition glass-panel text-slate-300 hover:text-white border border-white/10">
+            Vastu, Health & Crystals
+          </button>
+        </div>
+      </div>
+
+      <!-- 10 Consultations Grid -->
+      <div id="consultationGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- 1. CAREER CONSULTATION -->
+        <div class="cons-card glass-card rounded-3xl p-6 sm:p-7 border border-white/15 flex flex-col justify-between hover:border-celestial-gold/50 transition duration-300 relative group" data-category="career">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-amber-300 px-3 py-1 rounded-full bg-amber-950/50 border border-amber-500/30">
+                Career & Business
+              </span>
+              <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-celestial-gold">
+                <i data-lucide="briefcase" class="w-5 h-5"></i>
+              </div>
+            </div>
+
+            <h3 class="font-cinzel text-xl font-bold text-white mb-2">Career & Business Consultation</h3>
+            <p class="text-xs text-slate-300 mb-5 leading-relaxed">
+              Job changes, career stagnation, corporate promotions, business partner vetting, and high-growth transit timing.
+            </p>
+
+            <!-- Pricing Selector -->
+            <div class="space-y-2 mb-6">
+              <label class="flex items-center justify-between p-2.5 rounded-xl bg-cosmic-950/80 border border-slate-800 cursor-pointer hover:border-celestial-gold/40 transition">
+                <span class="text-xs text-slate-200 flex items-center gap-2">
+                  <input type="radio" name="plan_career" value="2100" checked onchange="setCustomPlan('c1', 'Career & Business Consultation', 'Detailed Chat', 2100)" class="accent-amber-400">
+                  <span>💬 Detailed Chat</span>
+                </span>
+                <span class="text-xs font-bold text-amber-300">₹2,100</span>
+              </label>
+              <label class="flex items-center justify-between p-2.5 rounded-xl bg-cosmic-950/80 border border-slate-800 cursor-pointer hover:border-celestial-gold/40 transition">
+                <span class="text-xs text-slate-200 flex items-center gap-2">
+                  <input type="radio" name="plan_career" value="3100" onchange="setCustomPlan('c1', 'Career & Business Consultation', 'Voice Call (30 min)', 3100)" class="accent-amber-400">
+                  <span>📞 Voice Call (30 min)</span>
+                </span>
+                <span class="text-xs font-bold text-amber-300">₹3,100</span>
+              </label>
+            </div>
+          </div>
+
+          <button onclick="bookCustomPlan('c1', 'Career & Business Consultation', 2100, 'Detailed Chat')" class="w-full py-3 rounded-xl bg-cosmic-900 border border-celestial-gold/40 text-celestial-gold font-bold text-xs uppercase tracking-wider hover:bg-celestial-gold hover:text-cosmic-950 transition flex items-center justify-center gap-1.5">
+            <span>Book Consultation</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <!-- 2. COMPLETE ANALYSIS OF CHART (FLAGSHIP & POPULAR) -->
+        <div class="cons-card glass-card rounded-3xl p-6 sm:p-7 border-2 border-celestial-gold relative flex flex-col justify-between shadow-[0_0_30px_rgba(243,201,106,0.22)] bg-gradient-to-b from-[#1f173f] to-[#0c091f]" data-category="core">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-cosmic-950 text-[10px] font-black uppercase tracking-widest px-4 py-1 rounded-full shadow-lg">
+            🔥 Most Popular & Recommended
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between mb-4 mt-2">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-amber-300 px-3 py-1 rounded-full bg-amber-950/60 border border-amber-500/30">
+                Full Life Matrix
+              </span>
+              <div class="w-10 h-10 rounded-xl bg-amber-400/20 border border-amber-400/40 flex items-center justify-center text-amber-300 animate-pulse">
+                <i data-lucide="sparkles" class="w-5 h-5"></i>
+              </div>
+            </div>
+
+            <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-white mb-2">Complete Analysis of Chart</h3>
+            <p class="text-xs text-slate-200 mb-5 leading-relaxed">
+              In-depth study of your Kundli including all 12 houses, planetary placements, yogas, dasha cycles, and lifetime predictions.
+            </p>
+
+            <!-- Pricing Selector -->
+            <div class="space-y-2 mb-6">
+              <label class="flex items-center justify-between p-2.5 rounded-xl bg-cosmic-950/80 border border-slate-800 cursor-pointer hover:border-celestial-gold transition">
+                <span class="text-xs text-slate-200 flex items-center gap-2">
+                  <input type="radio" name="plan_complete" value="3100" onchange="setCustomPlan('c2', 'Complete Analysis of Chart', 'Comprehensive Chat', 3100)" class="accent-amber-400">
+                  <span>💬 Comprehensive Chat</span>
+                </span>
+                <span class="text-xs font-bold text-amber-300">₹3,100</span>
+              </label>
+              <label class="flex items-center justify-between p-2.5 rounded-xl bg-cosmic-950/80 border border-slate-800 cursor-pointer hover:border-celestial-gold transition">
+                <span class="text-xs text-slate-200 flex items-center gap-2">
+                  <input type="radio" name="plan_complete" value="5100" checked onchange="setCustomPlan('c2', 'Complete Analysis of Chart', 'Priority Voice Call (45 min)', 5100)" class="accent-amber-400">
+                  <span>📞 Voice Call (45 min)</span>
+                </span>
+                <span class="text-xs font-bold text-amber-300">₹5,100</span>
+              </label>
+              <label class="flex items-center justify-between p-2.5 rounded-xl bg-cosmic-950/80 border border-slate-800 cursor-pointer hover:border-celestial-gold transition">
+                <span class="text-xs text-slate-200 flex items-center gap-2">
+                  <input type="radio" name="plan_complete" value="7100" onchange="setCustomPlan('c2', 'Complete Analysis of Chart', '1-on-1 Video Session (60 min)', 7100)" class="accent-amber-400">
+                  <span>📹 Video Call (60 min)</span>
+                </span>
+                <span class="text-xs font-bold text-amber-300">₹7,100</span>
+              </label>
+            </div>
+          </div>
+
+          <button onclick="bookCustomPlan('c2', 'Complete Analysis of Chart', 5100, 'Priority Voice Call (45 min)')" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-cosmic-950 font-extrabold text-xs uppercase tracking-wider shadow-lg hover:shadow-celestial-gold/50 hover:scale-[1.01] transition flex items-center justify-center gap-1.5">
+            <span>Book Complete Reading</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <!-- 3. MARRIAGE CONSULTATION -->
+        <div class="cons-card glass-card rounded-3xl p-6 sm:p-7 border border-white/15 flex flex-col justify-between hover:border-celestial-gold/50 transition duration-300 relative group" data-category="relationships">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-pink-300 px-3 py-1 rounded-full bg-pink-950/50 border border-pink-500/30">
+                Marriage & Milan
+              </span>
+              <div class="w-10 h-10 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400">
+                <i data-lucide="heart" class="w-5 h-5"></i>
+              </div>
+            </div>
+
+            <h3 class="font-cinzel text-xl font-bold text-white mb-2">Marriage Consultation</h3>
+            <p class="text-xs text-slate-300 mb-5 leading-relaxed">
+              Find the right match, check Ashtakoot compatibility, solve marriage delays (Shadi me rukawat), and marital disputes.
+            </p>
+
+            <!-- Pricing Selector -->
+            <div class="space-y-2 mb-6">
+              <label class="flex items-center justify-between p-2.5 rounded-xl bg-cosmic-950/80 border border-slate-800 cursor-pointer hover:border-celestial-gold/40 transition">
+                <span class="text-xs text-slate-200 flex items-center gap-2">
+                  <input type="radio" name="plan_marriage" value="2100" checked onchange="setCustomPlan('c3', 'Marriage Consultation', 'Detailed Chat', 2100)" class="accent-amber-400">
+                  <span>💬 Detailed Chat</span>
+                </span>
+                <span class="text-xs font-bold text-amber-300">₹2,100</span>
+              </label>
+              <label class="flex items-center justify-between p-2.5 rounded-xl bg-cosmic-950/80 border border-slate-800 cursor-pointer hover:border-celestial-gold/40 transition">
+                <span class="text-xs text-slate-200 flex items-center gap-2">
+                  <input type="radio" name="plan_marriage" value="3100" onchange="setCustomPlan('c3', 'Marriage Consultation', 'Voice Call (30 min)', 3100)" class="accent-amber-400">
+                  <span>📞 Voice Call (30 min)</span>
+                </span>
+                <span class="text-xs font-bold text-amber-300">₹3,100</span>
+              </label>
+            </div>
+          </div>
+
+          <button onclick="bookCustomPlan('c3', 'Marriage Consultation', 2100, 'Detailed Chat')" class="w-full py-3 rounded-xl bg-cosmic-900 border border-pink-400/40 text-pink-300 font-bold text-xs uppercase tracking-wider hover:bg-pink-400 hover:text-cosmic-950 transition flex items-center justify-center gap-1.5">
+            <span>Book Marriage Reading</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <!-- 4. FOREIGN PR & RELOCATION CONSULTATION -->
+        <div class="cons-card glass-card rounded-3xl p-6 sm:p-7 border border-white/15 flex flex-col justify-between hover:border-celestial-gold/50 transition duration-300 relative group" data-category="career">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-celestial-teal px-3 py-1 rounded-full bg-cyan-950/50 border border-cyan-500/30">
+                Foreign PR & Travel
+              </span>
+              <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-300">
+                <i data-lucide="plane-takeoff" class="w-5 h-5"></i>
+              </div>
+            </div>
+
+            <h3 class="font-cinzel text-xl font-bold text-white mb-2">Foreign PR & Relocation</h3>
+            <p class="text-xs text-slate-300 mb-5 leading-relaxed">
+              Stuck with foreign PR delays (Foreign PR me dikkat), visa issues, or unsure whether overseas settlement will bring prosperity.
+            </p>
+
+            <div class="space-y-2 mb-6">
+              <label class="flex items-center justify-between p-2.5 rounded-xl bg-cosmic-950/80 border border-slate-800 cursor-pointer hover:border-celestial-gold/40 transition">
+                <span class="text-xs text-slate-200 flex items-center gap-2">
+                  <input type="radio" name="plan_foreign" value="2100" checked onchange="setCustomPlan('c4', 'Foreign PR & Relocation', 'Detailed Chat', 2100)" class="accent-amber-400">
+                  <span>💬 Detailed Chat</span>
+                </span>
+                <span class="text-xs font-bold text-amber-300">₹2,100</span>
+              </label>
+              <label class="flex items-center justify-between p-2.5 rounded-xl bg-cosmic-950/80 border border-slate-800 cursor-pointer hover:border-celestial-gold/40 transition">
+                <span class="text-xs text-slate-200 flex items-center gap-2">
+                  <input type="radio" name="plan_foreign" value="3100" onchange="setCustomPlan('c4', 'Foreign PR & Relocation', 'Voice Call (30 min)', 3100)" class="accent-amber-400">
+                  <span>📞 Voice Call (30 min)</span>
+                </span>
+                <span class="text-xs font-bold text-amber-300">₹3,100</span>
+              </label>
+            </div>
+          </div>
+
+          <button onclick="bookCustomPlan('c4', 'Foreign PR & Relocation', 2100, 'Detailed Chat')" class="w-full py-3 rounded-xl bg-cosmic-900 border border-cyan-400/40 text-cyan-300 font-bold text-xs uppercase tracking-wider hover:bg-cyan-400 hover:text-cosmic-950 transition flex items-center justify-center gap-1.5">
+            <span>Book Foreign PR Session</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <!-- 5. WEALTH & 8TH HOUSE KARMIC FINANCE -->
+        <div class="cons-card glass-card rounded-3xl p-6 sm:p-7 border border-white/15 flex flex-col justify-between hover:border-celestial-gold/50 transition duration-300 relative group" data-category="career">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-400 px-3 py-1 rounded-full bg-emerald-950/50 border border-emerald-500/30">
+                Wealth & Money
+              </span>
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                <i data-lucide="coins" class="w-5 h-5"></i>
+              </div>
+            </div>
+
+            <h3 class="font-cinzel text-xl font-bold text-white mb-2">Finance & Wealth Alignment</h3>
+            <p class="text-xs text-slate-300 mb-5 leading-relaxed">
+              Resolve persistent money drainage (Paiso ki dikkat), debt traps, 8th house secrets, blocked payments, and Dhan Yoga activation.
+            </p>
+
+            <div class="space-y-2 mb-6">
+              <label class="flex items-center justify-between p-2.5 rounded-xl bg-cosmic-950/80 border border-slate-800 cursor-pointer hover:border-celestial-gold/40 transition">
+                <span class="text-xs text-slate-200 flex items-center gap-2">
+                  <input type="radio" name="plan_wealth" value="2100" checked onchange="setCustomPlan('c5', 'Finance & Wealth Alignment', 'Detailed Chat', 2100)" class="accent-amber-400">
+                  <span>💬 Detailed Chat</span>
+                </span>
+                <span class="text-xs font-bold text-amber-300">₹2,100</span>
+              </label>
+              <label class="flex items-center justify-between p-2.5 rounded-xl bg-cosmic-950/80 border border-slate-800 cursor-pointer hover:border-celestial-gold/40 transition">
+                <span class="text-xs text-slate-200 flex items-center gap-2">
+                  <input type="radio" name="plan_wealth" value="3100" onchange="setCustomPlan('c5', 'Finance & Wealth Alignment', 'Voice Call (30 min)', 3100)" class="accent-amber-400">
+                  <span>📞 Voice Call (30 min)</span>
+                </span>
+                <span class="text-xs font-bold text-amber-300">₹3,100</span>
+              </label>
+            </div>
+          </div>
+
+          <button onclick="bookCustomPlan('c5', 'Finance & Wealth Alignment', 2100, 'Detailed Chat')" class="w-full py-3 rounded-xl bg-cosmic-900 border border-emerald-400/40 text-emerald-300 font-bold text-xs uppercase tracking-wider hover:bg-emerald-400 hover:text-cosmic-950 transition flex items-center justify-center gap-1.5">
+            <span>Book Wealth Reading</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <!-- 6. PREGNANCY & SANTAN SUKH CONSULTATION -->
+        <div class="cons-card glass-card rounded-3xl p-6 sm:p-7 border border-white/15 flex flex-col justify-between hover:border-celestial-gold/50 transition duration-300 relative group" data-category="relationships">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-purple-300 px-3 py-1 rounded-full bg-purple-950/50 border border-purple-500/30">
+                Childbirth & Fertility
+              </span>
+              <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-300">
+                <i data-lucide="baby" class="w-5 h-5"></i>
+              </div>
+            </div>
+
+            <h3 class="font-cinzel text-xl font-bold text-white mb-2">Pregnancy & Santan Guidance</h3>
+            <p class="text-xs text-slate-300 mb-5 leading-relaxed">
+              Addressing child conception delays (Pregnancy me dikkat), 5th house santan dosha analysis, and auspicious planetary timing windows.
+            </p>
+
+            <div class="space-y-2 mb-6">
+              <label class="flex items-center justify-between p-2.5 rounded-xl bg-cosmic-950/80 border border-slate-800 cursor-pointer hover:border-celestial-gold/40 transition">
+                <span class="text-xs text-slate-200 flex items-center gap-2">
+                  <input type="radio" name="plan_pregnancy" value="2100" checked onchange="setCustomPlan('c6', 'Pregnancy & Santan Guidance', 'Detailed Chat', 2100)" class="accent-amber-400">
+                  <span>💬 Detailed Chat</span>
+                </span>
+                <span class="text-xs font-bold text-amber-300">₹2,100</span>
+              </label>
+              <label class="flex items-center justify-between p-2.5 rounded-xl bg-cosmic-950/80 border border-slate-800 cursor-pointer hover:border-celestial-gold/40 transition">
+                <span class="text-xs text-slate-200 flex items-center gap-2">
+                  <input type="radio" name="plan_pregnancy" value="3100" onchange="setCustomPlan('c6', 'Pregnancy & Santan Guidance', 'Voice Call (30 min)', 3100)" class="accent-amber-400">
+                  <span>📞 Voice Call (30 min)</span>
+                </span>
+                <span class="text-xs font-bold text-amber-300">₹3,100</span>
+              </label>
+            </div>
+          </div>
+
+          <button onclick="bookCustomPlan('c6', 'Pregnancy & Santan Guidance', 2100, 'Detailed Chat')" class="w-full py-3 rounded-xl bg-cosmic-900 border border-purple-400/40 text-purple-300 font-bold text-xs uppercase tracking-wider hover:bg-purple-400 hover:text-cosmic-950 transition flex items-center justify-center gap-1.5">
+            <span>Book Santan Guidance</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <!-- 7. VASTU & HOME ENERGY HARMONY -->
+        <div class="cons-card glass-card rounded-3xl p-6 sm:p-7 border border-white/15 flex flex-col justify-between hover:border-celestial-gold/50 transition duration-300 relative group" data-category="healing">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-amber-400 px-3 py-1 rounded-full bg-amber-950/50 border border-amber-500/30">
+                Spatial Architecture
+              </span>
+              <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-300">
+                <i data-lucide="home" class="w-5 h-5"></i>
+              </div>
+            </div>
+
+            <h3 class="font-cinzel text-xl font-bold text-white mb-2">Vastu Shastra & Space Healing</h3>
+            <p class="text-xs text-slate-300 mb-5 leading-relaxed">
+              Resolve family disputes, heaviness, and commercial stagnation with zero-demolition spatial energy calibration.
+            </p>
+
+            <div class="space-y-2 mb-6">
+              <label class="flex items-center justify-between p-2.5 rounded-xl bg-cosmic-950/80 border border-slate-800 cursor-pointer hover:border-celestial-gold/40 transition">
+                <span class="text-xs text-slate-200 flex items-center gap-2">
+                  <input type="radio" name="plan_vastu" value="3100" checked onchange="setCustomPlan('c7', 'Vastu Shastra & Space Healing', 'Online Floorplan Audit', 3100)" class="accent-amber-400">
+                  <span>📐 Floorplan Audit</span>
+                </span>
+                <span class="text-xs font-bold text-amber-300">₹3,100</span>
+              </label>
+              <label class="flex items-center justify-between p-2.5 rounded-xl bg-cosmic-950/80 border border-slate-800 cursor-pointer hover:border-celestial-gold/40 transition">
+                <span class="text-xs text-slate-200 flex items-center gap-2">
+                  <input type="radio" name="plan_vastu" value="5100" onchange="setCustomPlan('c7', 'Vastu Shastra & Space Healing', 'Deep Video Vastu Walkthrough', 5100)" class="accent-amber-400">
+                  <span>📹 Video Walkthrough</span>
+                </span>
+                <span class="text-xs font-bold text-amber-300">₹5,100</span>
+              </label>
+            </div>
+          </div>
+
+          <button onclick="bookCustomPlan('c7', 'Vastu Shastra & Space Healing', 3100, 'Online Floorplan Audit')" class="w-full py-3 rounded-xl bg-cosmic-900 border border-celestial-gold/40 text-celestial-gold font-bold text-xs uppercase tracking-wider hover:bg-celestial-gold hover:text-cosmic-950 transition flex items-center justify-center gap-1.5">
+            <span>Book Vastu Audit</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <!-- 8. GEMSTONE & RUDRAKSHA RECOMMENDATION -->
+        <div class="cons-card glass-card rounded-3xl p-6 sm:p-7 border border-white/15 flex flex-col justify-between hover:border-celestial-gold/50 transition duration-300 relative group" data-category="healing">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-teal-300 px-3 py-1 rounded-full bg-teal-950/50 border border-teal-500/30">
+                Aura Amplifiers
+              </span>
+              <div class="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-teal-300">
+                <i data-lucide="gem" class="w-5 h-5"></i>
+              </div>
+            </div>
+
+            <h3 class="font-cinzel text-xl font-bold text-white mb-2">Gemstone & Rudraksha Testing</h3>
+            <p class="text-xs text-slate-300 mb-5 leading-relaxed">
+              Empirical assessment of which stones and Mukhi beads harmonize with your Lagnesh and Yogakaraka without triggering negative side-effects.
+            </p>
+
+            <div class="space-y-2 mb-6">
+              <label class="flex items-center justify-between p-2.5 rounded-xl bg-cosmic-950/80 border border-slate-800 cursor-pointer hover:border-celestial-gold/40 transition">
+                <span class="text-xs text-slate-200 flex items-center gap-2">
+                  <input type="radio" name="plan_gem" value="1500" checked onchange="setCustomPlan('c8', 'Gemstone & Rudraksha Testing', 'Prescription Report', 1500)" class="accent-amber-400">
+                  <span>📄 Prescribed Report</span>
+                </span>
+                <span class="text-xs font-bold text-amber-300">₹1,500</span>
+              </label>
+              <label class="flex items-center justify-between p-2.5 rounded-xl bg-cosmic-950/80 border border-slate-800 cursor-pointer hover:border-celestial-gold/40 transition">
+                <span class="text-xs text-slate-200 flex items-center gap-2">
+                  <input type="radio" name="plan_gem" value="2500" onchange="setCustomPlan('c8', 'Gemstone & Rudraksha Testing', 'Call + Custom Sourcing Advice', 2500)" class="accent-amber-400">
+                  <span>📞 Call + Sourcing Guide</span>
+                </span>
+                <span class="text-xs font-bold text-amber-300">₹2,500</span>
+              </label>
+            </div>
+          </div>
+
+          <button onclick="bookCustomPlan('c8', 'Gemstone & Rudraksha Testing', 1500, 'Prescription Report')" class="w-full py-3 rounded-xl bg-cosmic-900 border border-teal-400/40 text-teal-300 font-bold text-xs uppercase tracking-wider hover:bg-teal-400 hover:text-cosmic-950 transition flex items-center justify-center gap-1.5">
+            <span>Get Gemstone Advice</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <!-- 9. HEALTH, ANXIETY & AURA HEALING -->
+        <div class="cons-card glass-card rounded-3xl p-6 sm:p-7 border border-white/15 flex flex-col justify-between hover:border-celestial-gold/50 transition duration-300 relative group" data-category="healing">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-300 px-3 py-1 rounded-full bg-emerald-950/50 border border-emerald-500/30">
+                Aura & Longevity
+              </span>
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-300">
+                <i data-lucide="activity" class="w-5 h-5"></i>
+              </div>
+            </div>
+
+            <h3 class="font-cinzel text-xl font-bold text-white mb-2">Health & Emotional Healing</h3>
+            <p class="text-xs text-slate-300 mb-5 leading-relaxed">
+              Medical astrology analysis of the 6th and 8th houses for chronic lethargy, heavy anxiety, aura depletion, and psychosomatic blocks.
+            </p>
+
+            <div class="space-y-2 mb-6">
+              <label class="flex items-center justify-between p-2.5 rounded-xl bg-cosmic-950/80 border border-slate-800 cursor-pointer hover:border-celestial-gold/40 transition">
+                <span class="text-xs text-slate-200 flex items-center gap-2">
+                  <input type="radio" name="plan_health" value="2100" checked onchange="setCustomPlan('c9', 'Health & Emotional Healing', 'Detailed Chat', 2100)" class="accent-amber-400">
+                  <span>💬 Detailed Chat</span>
+                </span>
+                <span class="text-xs font-bold text-amber-300">₹2,100</span>
+              </label>
+              <label class="flex items-center justify-between p-2.5 rounded-xl bg-cosmic-950/80 border border-slate-800 cursor-pointer hover:border-celestial-gold/40 transition">
+                <span class="text-xs text-slate-200 flex items-center gap-2">
+                  <input type="radio" name="plan_health" value="3100" onchange="setCustomPlan('c9', 'Health & Emotional Healing', 'Voice Call (30 min)', 3100)" class="accent-amber-400">
+                  <span>📞 Voice Call (30 min)</span>
+                </span>
+                <span class="text-xs font-bold text-amber-300">₹3,100</span>
+              </label>
+            </div>
+          </div>
+
+          <button onclick="bookCustomPlan('c9', 'Health & Emotional Healing', 2100, 'Detailed Chat')" class="w-full py-3 rounded-xl bg-cosmic-900 border border-emerald-400/40 text-emerald-300 font-bold text-xs uppercase tracking-wider hover:bg-emerald-400 hover:text-cosmic-950 transition flex items-center justify-center gap-1.5">
+            <span>Book Health Session</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <!-- 10. YEARLY VARSHPHAL & TRANSIT CALENDAR -->
+        <div class="cons-card glass-card rounded-3xl p-6 sm:p-7 border border-white/15 flex flex-col justify-between hover:border-celestial-gold/50 transition duration-300 relative group" data-category="core">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-celestial-amethyst px-3 py-1 rounded-full bg-purple-950/50 border border-purple-500/30">
+                12-Month Forecast
+              </span>
+              <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-celestial-amethyst">
+                <i data-lucide="calendar" class="w-5 h-5"></i>
+              </div>
+            </div>
+
+            <h3 class="font-cinzel text-xl font-bold text-white mb-2">Yearly Varshphal Transit</h3>
+            <p class="text-xs text-slate-300 mb-5 leading-relaxed">
+              Month-by-month predictive roadmap calculating solar return (Tajika System) for favorable investment windows, career moves, and warnings.
+            </p>
+
+            <div class="space-y-2 mb-6">
+              <label class="flex items-center justify-between p-2.5 rounded-xl bg-cosmic-950/80 border border-slate-800 cursor-pointer hover:border-celestial-gold/40 transition">
+                <span class="text-xs text-slate-200 flex items-center gap-2">
+                  <input type="radio" name="plan_year" value="3500" checked onchange="setCustomPlan('c10', 'Yearly Varshphal Transit', 'Detailed Annual Report', 3500)" class="accent-amber-400">
+                  <span>📄 Detailed Annual Report</span>
+                </span>
+                <span class="text-xs font-bold text-amber-300">₹3,500</span>
+              </label>
+              <label class="flex items-center justify-between p-2.5 rounded-xl bg-cosmic-950/80 border border-slate-800 cursor-pointer hover:border-celestial-gold/40 transition">
+                <span class="text-xs text-slate-200 flex items-center gap-2">
+                  <input type="radio" name="plan_year" value="5500" onchange="setCustomPlan('c10', 'Yearly Varshphal Transit', 'Annual Report + Voice Call', 5500)" class="accent-amber-400">
+                  <span>📞 Report + Voice Call</span>
+                </span>
+                <span class="text-xs font-bold text-amber-300">₹5,500</span>
+              </label>
+            </div>
+          </div>
+
+          <button onclick="bookCustomPlan('c10', 'Yearly Varshphal Transit', 3500, 'Detailed Annual Report')" class="w-full py-3 rounded-xl bg-cosmic-900 border border-celestial-amethyst/40 text-celestial-amethyst font-bold text-xs uppercase tracking-wider hover:bg-celestial-amethyst hover:text-cosmic-950 transition flex items-center justify-center gap-1.5">
+            <span>Book Varshphal Reading</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Quick Trust Guarantee Banner -->
+      <div class="mt-12 p-6 rounded-2xl glass-panel border border-celestial-gold/20 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+            <i data-lucide="lock" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-white">100% Confidential & Personally Calibrated</h4>
+            <p class="text-xs text-slate-400">No computerized generic PDFs. Garima Verma prepares every chart with manual dasha calculations.</p>
+          </div>
+        </div>
+        <a href="https://wa.me/919999999999?text=Hello%20Garima%20Ji%2C%20I%20have%20a%20question%20regarding%20astrohealer4U%20consultations" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-full bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 text-xs font-bold tracking-wider uppercase transition flex items-center gap-2 shrink-0">
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          <span>Chat on WhatsApp</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOUNDER SPOTLIGHT: GARIMA VERMA -->
+  <section id="about" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Visual Column -->
+      <div class="lg:col-span-5 relative flex justify-center">
+        <div class="relative w-72 sm:w-80 h-96 sm:h-[420px] rounded-3xl p-1 bg-gradient-to-b from-celestial-gold via-purple-600 to-transparent shadow-[0_0_40px_rgba(157,78,221,0.3)]">
+          <div class="w-full h-full rounded-[22px] bg-cosmic-900 overflow-hidden relative flex flex-col items-center justify-center p-6 text-center">
+            
+            <!-- Avatar Illustration / Mystic Representation -->
+            <div class="w-32 h-32 rounded-full border-2 border-celestial-gold/50 p-1 mb-6 relative">
+              <div class="w-full h-full rounded-full bg-gradient-to-tr from-purple-900 to-indigo-950 flex items-center justify-center overflow-hidden">
+                <i data-lucide="sparkles" class="w-12 h-12 text-celestial-gold animate-pulse"></i>
+              </div>
+              <div class="absolute -bottom-1 -right-1 bg-celestial-gold text-cosmic-950 text-[10px] font-black px-2 py-0.5 rounded-full uppercase">
+                Vedic Guru
+              </div>
+            </div>
+
+            <h4 class="font-cinzel text-2xl font-bold text-white">Garima Verma</h4>
+            <p class="text-xs text-celestial-gold uppercase tracking-wider font-semibold mt-1">Founder & Astro-Alchemist</p>
+            <p class="text-xs text-slate-400 mt-4 leading-relaxed italic">
+              “Your chart isn’t a death sentence or a promise of easy luxury; it is your soul’s blueprint. When you comprehend the energetic contract you signed before birth, suffering turns into sovereignty.”
+            </p>
+
+            <div class="mt-6 flex items-center gap-3">
+              <span class="text-[11px] px-3 py-1 rounded-full bg-purple-900/50 border border-purple-500/30 text-purple-200">Kundli Expert</span>
+              <span class="text-[11px] px-3 py-1 rounded-full bg-amber-900/50 border border-amber-500/30 text-amber-200">Reiki Master</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Column -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-900/30 border border-purple-500/30 text-celestial-amethyst text-xs uppercase tracking-widest">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+          <span>The AstroHealer Philosophy</span>
+        </div>
+
+        <h3 class="font-cinzel text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+          A Sanctuary Free from Fear, Guilt, & Expensive Superstitions
+        </h3>
+
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+          Most people leave traditional astrologers feeling terrified of Saturn’s Sade Sati or Manglik doshas. At <strong>astrohealer4U</strong>, we dismantle that terror. Astrology is mathematical cosmic resonance, psychological insight, and energy mechanics.
+        </p>
+
+        <div class="space-y-4 pt-2">
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-full bg-celestial-gold/10 border border-celestial-gold/40 flex items-center justify-center text-celestial-gold shrink-0 mt-0.5">
+              <i data-lucide="check" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold text-sm">Empirical Parashara & KP Systems</h4>
+              <p class="text-slate-400 text-xs mt-0.5">Deep multi-layered dasha transit calculations without vague guesses.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-full bg-celestial-gold/10 border border-celestial-gold/40 flex items-center justify-center text-celestial-gold shrink-0 mt-0.5">
+              <i data-lucide="check" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold text-sm">Pragmatic, Cost-Effective Remedies</h4>
+              <p class="text-slate-400 text-xs mt-0.5">Mantra resonance, behavioral adjustments, color alignments, and certified natural crystals.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-full bg-celestial-gold/10 border border-celestial-gold/40 flex items-center justify-center text-celestial-gold shrink-0 mt-0.5">
+              <i data-lucide="check" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold text-sm">Complete Confidentiality Guaranteed</h4>
+              <p class="text-slate-400 text-xs mt-0.5">Your deepest vulnerabilities, career secrets, and marital challenges remain 100% private.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4 flex items-center gap-4">
+          <a href="#consultations" class="px-6 py-3 rounded-full bg-celestial-gold text-cosmic-950 font-bold text-xs uppercase tracking-wider hover:bg-yellow-300 transition shadow-lg">
+            Consult With Garima Verma
+          </a>
+          <a href="#oracle" class="text-xs uppercase tracking-wider text-slate-400 hover:text-white transition flex items-center gap-1 font-semibold">
+            <span>Draw Today’s Oracle</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- INTERACTIVE DIVINE ORACLE TAROT SECTION -->
+  <section id="oracle" class="py-20 px-4 sm:px-6 lg:px-8 bg-cosmic-900/50 border-t border-b border-celestial-purple/20 relative">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-semibold tracking-widest text-celestial-amethyst uppercase">✦ Interactive Divine Oracle ✦</span>
+        <h3 class="font-cinzel text-3xl sm:text-4xl font-bold text-white mt-1 mb-3">Your Daily Cosmic Tarot Guidance</h3>
+        <p class="text-slate-400 text-xs sm:text-sm">
+          Focus deeply on a current confusion or decision. Click any card below to flip and synthesize your real-time cosmic vibration.
+        </p>
+      </div>
+
+      <!-- Tarot Cards Container (3 Cards) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10 max-w-4xl mx-auto">
+        
+        <!-- Card 1 -->
+        <div class="oracle-card-slot perspective-1000 h-96 cursor-pointer select-none" onclick="flipOracleCard(this, 0)">
+          <div class="oracle-card-inner relative w-full h-full duration-700 transform-style-3d transition-transform rounded-2xl shadow-xl">
+            <!-- Front (Cover) -->
+            <div class="absolute inset-0 w-full h-full backface-hidden rounded-2xl glass-card border-2 border-celestial-gold/40 p-6 flex flex-col items-center justify-between bg-gradient-to-b from-[#181236] to-[#0c081c]">
+              <div class="text-[10px] tracking-widest text-celestial-gold uppercase font-cinzel">AstroHealer Oracle</div>
+              <div class="w-20 h-20 rounded-full border border-celestial-gold/30 flex items-center justify-center animate-pulse">
+                <i data-lucide="sun" class="w-10 h-10 text-celestial-gold"></i>
+              </div>
+              <div class="text-center">
+                <p class="text-xs uppercase tracking-wider text-slate-300 font-semibold mb-1">Card I: The Luminary</p>
+                <span class="text-[11px] text-amber-300 bg-amber-950/60 px-3 py-1 rounded-full border border-amber-500/30">Tap to Reveal ✦</span>
+              </div>
+            </div>
+            <!-- Back (Revealed Content) -->
+            <div class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-2xl glass-card border-2 border-amber-400 p-6 flex flex-col justify-between bg-gradient-to-b from-cosmic-850 to-cosmic-950">
+              <div>
+                <div class="flex justify-between items-center text-[10px] uppercase text-celestial-gold font-bold">
+                  <span>Ether Element</span>
+                  <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                </div>
+                <h4 class="font-cinzel text-lg font-bold text-white mt-3 mb-2">The Luminary Star</h4>
+                <p class="text-xs text-slate-300 leading-relaxed italic">
+                  “A beacon of hope and unexpected clarity. What you believed was closed is actually making room for sudden expansion. Trust your inner compass today.”
+                </p>
+              </div>
+              <div class="pt-3 border-t border-white/10 text-[11px] text-amber-300">
+                <strong>Remedy:</strong> Offer water to Surya at dawn; wear shades of yellow or gold.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="oracle-card-slot perspective-1000 h-96 cursor-pointer select-none" onclick="flipOracleCard(this, 1)">
+          <div class="oracle-card-inner relative w-full h-full duration-700 transform-style-3d transition-transform rounded-2xl shadow-xl">
+            <!-- Front -->
+            <div class="absolute inset-0 w-full h-full backface-hidden rounded-2xl glass-card border-2 border-celestial-purple/40 p-6 flex flex-col items-center justify-between bg-gradient-to-b from-[#181236] to-[#0c081c]">
+              <div class="text-[10px] tracking-widest text-celestial-amethyst uppercase font-cinzel">AstroHealer Oracle</div>
+              <div class="w-20 h-20 rounded-full border border-celestial-purple/30 flex items-center justify-center animate-pulse">
+                <i data-lucide="crown" class="w-10 h-10 text-celestial-amethyst"></i>
+              </div>
+              <div class="text-center">
+                <p class="text-xs uppercase tracking-wider text-slate-300 font-semibold mb-1">Card II: Divine Empress</p>
+                <span class="text-[11px] text-purple-300 bg-purple-950/60 px-3 py-1 rounded-full border border-purple-500/30">Tap to Reveal ✦</span>
+              </div>
+            </div>
+            <!-- Back -->
+            <div class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-2xl glass-card border-2 border-celestial-amethyst p-6 flex flex-col justify-between bg-gradient-to-b from-cosmic-850 to-cosmic-950">
+              <div>
+                <div class="flex justify-between items-center text-[10px] uppercase text-celestial-amethyst font-bold">
+                  <span>Earth Element</span>
+                  <i data-lucide="gem" class="w-3.5 h-3.5"></i>
+                </div>
+                <h4 class="font-cinzel text-lg font-bold text-white mt-3 mb-2">The Divine Empress</h4>
+                <p class="text-xs text-slate-300 leading-relaxed italic">
+                  “Nurture your physical body and creative projects. Great manifestations demand patience, sensory comfort, and complete self-kindness right now.”
+                </p>
+              </div>
+              <div class="pt-3 border-t border-white/10 text-[11px] text-purple-300">
+                <strong>Remedy:</strong> Spend 10 minutes barefoot on soil or grass; hydrate with silver vessel water.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="oracle-card-slot perspective-1000 h-96 cursor-pointer select-none" onclick="flipOracleCard(this, 2)">
+          <div class="oracle-card-inner relative w-full h-full duration-700 transform-style-3d transition-transform rounded-2xl shadow-xl">
+            <!-- Front -->
+            <div class="absolute inset-0 w-full h-full backface-hidden rounded-2xl glass-card border-2 border-teal-500/40 p-6 flex flex-col items-center justify-between bg-gradient-to-b from-[#181236] to-[#0c081c]">
+              <div class="text-[10px] tracking-widest text-teal-300 uppercase font-cinzel">AstroHealer Oracle</div>
+              <div class="w-20 h-20 rounded-full border border-teal-500/30 flex items-center justify-center animate-pulse">
+                <i data-lucide="eye" class="w-10 h-10 text-teal-300"></i>
+              </div>
+              <div class="text-center">
+                <p class="text-xs uppercase tracking-wider text-slate-300 font-semibold mb-1">Card III: The Mystic Void</p>
+                <span class="text-[11px] text-teal-300 bg-teal-950/60 px-3 py-1 rounded-full border border-teal-500/30">Tap to Reveal ✦</span>
+              </div>
+            </div>
+            <!-- Back -->
+            <div class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-2xl glass-card border-2 border-teal-400 p-6 flex flex-col justify-between bg-gradient-to-b from-cosmic-850 to-cosmic-950">
+              <div>
+                <div class="flex justify-between items-center text-[10px] uppercase text-teal-300 font-bold">
+                  <span>Void Element</span>
+                  <i data-lucide="compass" class="w-3.5 h-3.5"></i>
+                </div>
+                <h4 class="font-cinzel text-lg font-bold text-white mt-3 mb-2">The Mystic Sage</h4>
+                <p class="text-xs text-slate-300 leading-relaxed italic">
+                  “A call to pause and reflect. Silence the outside chatter. Your subconscious and dreams currently hold the exact solution to your roadblock.”
+                </p>
+              </div>
+              <div class="pt-3 border-t border-white/10 text-[11px] text-teal-300">
+                <strong>Remedy:</strong> Practice 5-minute Chandra pranayama before sleep tonight.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Reshuffle Deck Button -->
+      <div class="text-center">
+        <button onclick="reshuffleOracle()" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-slate-600 hover:border-celestial-gold text-slate-300 hover:text-celestial-gold text-xs font-semibold uppercase tracking-wider transition">
+          <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+          <span>Reshuffle Sacred Deck</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- INTERACTIVE CELESTIAL ZODIAC MATRIX -->
+  <section id="zodiac" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative">
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs font-semibold tracking-widest text-celestial-gold uppercase">✦ Planetary Transit Radar ✦</span>
+        <h3 class="font-cinzel text-3xl sm:text-4xl font-bold text-white mt-1 mb-3">Your Celestial Zodiac Oracle</h3>
+        <p class="text-slate-400 text-xs sm:text-sm">
+          Select your native Moon or Ascendant sign to inspect current cosmic frequencies, lucky numbers, and intuitive alignments.
+        </p>
+      </div>
+
+      <!-- 12 Zodiac Selector Tabs -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-4 justify-start lg:justify-center no-scrollbar mb-8">
+        <div id="zodiacPills" class="flex gap-2">
+          <!-- Dynamically populated via JS for all 12 signs -->
+        </div>
+      </div>
+
+      <!-- Selected Sign Card Display -->
+      <div id="zodiacDetailPanel" class="max-w-4xl mx-auto p-6 sm:p-10 rounded-3xl glass-card border border-celestial-gold/30">
+        <!-- Content will be swapped smoothly by JavaScript -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROCEDURAL NATAL BLUEPRINT (KUNDLI CALCULATOR ENGINE PREVIEW) -->
+  <section id="blueprint" class="py-20 px-4 sm:px-6 lg:px-8 bg-cosmic-900/60 border-t border-b border-celestial-gold/15 relative">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-celestial-gold text-xs uppercase tracking-wider mb-2">
+          <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+          <span>Vedic Ephemeris Calculator</span>
+        </div>
+        <h3 class="font-cinzel text-3xl sm:text-4xl font-bold text-white">Procedural Natal Blueprint</h3>
+        <p class="text-slate-400 text-xs sm:text-sm mt-2">
+          Input your exact terrestrial coordinates of descent to compute foundational planetary placements and house structures.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Input Form -->
+        <div class="lg:col-span-5 glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 space-y-4">
+          <h4 class="font-cinzel text-lg font-bold text-white flex items-center gap-2">
+            <i data-lucide="map-pin" class="w-4 h-4 text-celestial-gold"></i>
+            <span>Coordinates of Descent</span>
+          </h4>
+
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-slate-400 mb-1">Full Name</label>
+            <input type="text" id="natalName" placeholder="e.g. Swati Sharma" class="w-full bg-cosmic-950/80 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-celestial-gold">
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-slate-400 mb-1">Date of Birth</label>
+              <input type="date" id="natalDob" value="1998-05-18" class="w-full bg-cosmic-950/80 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-celestial-gold">
+            </div>
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-slate-400 mb-1">Exact Time</label>
+              <input type="time" id="natalTime" value="09:42" class="w-full bg-cosmic-950/80 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-celestial-gold">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-slate-400 mb-1">Birth Location (City / State)</label>
+            <input type="text" id="natalPlace" placeholder="e.g. New Delhi, India" value="New Delhi, India" class="w-full bg-cosmic-950/80 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-celestial-gold">
+          </div>
+
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-slate-400 mb-1">Primary Area of Concern</label>
+            <select id="natalFocus" class="w-full bg-cosmic-950/80 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-celestial-gold">
+              <option value="career">Career, Job Promotion & Foreign Relocation</option>
+              <option value="marriage">Marriage Delay, Relationship & Compatibility</option>
+              <option value="wealth">8th House Secrets, Wealth & Sudden Blockages</option>
+              <option value="health">Mental Peace, Health & Spiritual Purpose</option>
+            </select>
+          </div>
+
+          <button onclick="calculateNatalChart()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-celestial-gold via-yellow-400 to-amber-500 text-cosmic-950 font-bold text-xs uppercase tracking-wider shadow-lg hover:shadow-celestial-gold/30 hover:scale-[1.01] transition">
+            Generate Chart Diagnostics
+          </button>
+        </div>
+
+        <!-- Output Graphical Kundli Diamond Matrix & Diagnostics -->
+        <div class="lg:col-span-7 glass-panel p-6 sm:p-8 rounded-3xl border border-celestial-gold/20 flex flex-col justify-between">
+          <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+            <div>
+              <h4 class="font-cinzel text-lg font-bold text-white flex items-center gap-2">
+                <i data-lucide="compass" class="w-4 h-4 text-celestial-amethyst"></i>
+                <span id="outputTitle">Vedic Kundli Projection</span>
+              </h4>
+              <p class="text-[11px] text-slate-400" id="outputSubtitle">Parashara D1 Chart Coordinates</p>
+            </div>
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-950/80 text-emerald-300 border border-emerald-500/30">
+              Live Alignment
+            </span>
+          </div>
+
+          <!-- Diamond Chart SVG Representation (North Indian Style Kundli) -->
+          <div class="flex justify-center mb-6">
+            <div class="relative w-64 h-64 sm:w-80 sm:h-80 border-2 border-celestial-gold/60 bg-cosmic-950/60 p-2 shadow-[0_0_20px_rgba(243,201,106,0.15)]">
+              <!-- Internal Diamond lines -->
+              <svg viewBox="0 0 200 200" class="w-full h-full stroke-celestial-gold/60 fill-none stroke-[1.2]">
+                <!-- Main square cross -->
+                <line x1="0" y1="0" x2="200" y2="200" />
+                <line x1="200" y1="0" x2="0" y2="200" />
+                <!-- Internal rotated diamond -->
+                <polygon points="100,0 200,100 100,200 0,100" />
+                
+                <!-- House text markers -->
+                <text x="100" y="45" text-anchor="middle" class="fill-amber-300 font-cinzel text-[10px] stroke-none font-bold">1H (Lagna)</text>
+                <text x="100" y="60" text-anchor="middle" id="svgAscSign" class="fill-white font-sans text-[8px] stroke-none">Sun / Leo</text>
+
+                <text x="50" y="25" text-anchor="middle" class="fill-slate-400 font-cinzel text-[8px] stroke-none">2H</text>
+                <text x="25" y="50" text-anchor="middle" class="fill-slate-400 font-cinzel text-[8px] stroke-none">3H</text>
+                <text x="45" y="100" text-anchor="middle" class="fill-amber-300 font-cinzel text-[10px] stroke-none font-bold">4H</text>
+                
+                <text x="25" y="150" text-anchor="middle" class="fill-slate-400 font-cinzel text-[8px] stroke-none">5H</text>
+                <text x="50" y="180" text-anchor="middle" class="fill-slate-400 font-cinzel text-[8px] stroke-none">6H</text>
+                
+                <text x="100" y="160" text-anchor="middle" class="fill-amber-300 font-cinzel text-[10px] stroke-none font-bold">7H (Kama)</text>
+                <text x="100" y="175" text-anchor="middle" id="svgKamaSign" class="fill-teal-300 font-sans text-[8px] stroke-none">Saturn ♄</text>
+
+                <text x="150" y="180" text-anchor="middle" class="fill-amber-400 font-cinzel text-[8px] stroke-none">8H (Karma)</text>
+                <text x="175" y="150" text-anchor="middle" class="fill-slate-400 font-cinzel text-[8px] stroke-none">9H</text>
+                
+                <text x="155" y="100" text-anchor="middle" class="fill-amber-300 font-cinzel text-[10px] stroke-none font-bold">10H (Artha)</text>
+                <text x="175" y="50" text-anchor="middle" class="fill-slate-400 font-cinzel text-[8px] stroke-none">11H</text>
+                <text x="150" y="25" text-anchor="middle" class="fill-slate-400 font-cinzel text-[8px] stroke-none">12H (Moksha)</text>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Quick Calculated Results Badges -->
+          <div id="chartInsightSummary" class="p-4 rounded-xl bg-purple-950/40 border border-purple-500/20 text-xs text-slate-300 space-y-1.5">
+            <div class="flex justify-between items-center text-white font-medium">
+              <span>✦ Active Mahadasha:</span>
+              <span class="text-amber-300 font-bold" id="dashaValue">Jupiter (Guru) - Rahu Antardasha</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span>✦ Karmic Axis (Rahu/Ketu):</span>
+              <span class="text-slate-200" id="rahuKetuValue">Pisces / Virgo (Transmutation)</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span>✦ 8th House Sensitivity:</span>
+              <span class="text-purple-300 font-semibold" id="house8Value">High Intuitive Capacity / Hidden Talents</span>
+            </div>
+          </div>
+
+          <div class="mt-4 flex flex-col sm:flex-row gap-3">
+            <a href="#consultations" class="flex-1 py-3 text-center rounded-xl bg-celestial-gold text-cosmic-950 font-bold text-xs uppercase tracking-wider hover:bg-yellow-300 transition">
+              Book Deep Dive With Garima
+            </a>
+            <button onclick="shareKundliSummary()" class="px-4 py-3 rounded-xl border border-slate-600 hover:border-slate-400 text-slate-300 text-xs font-semibold uppercase tracking-wider transition flex items-center justify-center gap-1.5">
+              <i data-lucide="share-2" class="w-3.5 h-3.5"></i>
+              <span>Copy Blueprint</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONSULTATION SERVICES MATRIX & PRICING -->
+  <section id="consultations" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative">
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-semibold tracking-widest text-celestial-gold uppercase">✦ Honest 1-on-1 Guidance ✦</span>
+        <h3 class="font-cinzel text-3xl sm:text-4xl font-bold text-white mt-1 mb-3">
+          Vedic Jyotish Consultation Services
+        </h3>
+        <p class="text-slate-400 text-xs sm:text-sm">
+          No automated computer-generated reports. Every reading is personally calibrated by <strong>Garima Verma</strong> with custom remedies and real-time guidance.
+        </p>
+      </div>
+
+      <!-- Pricing Matrix (3 Core Offerings) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Service 1: Career Consultation -->
+        <div class="glass-card rounded-3xl p-8 border border-white/10 flex flex-col justify-between hover:border-celestial-gold/50 transition">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold uppercase tracking-widest text-celestial-purple px-3 py-1 rounded-full bg-purple-900/40 border border-purple-500/30">
+                Career & PR
+              </span>
+              <i data-lucide="briefcase" class="w-5 h-5 text-celestial-gold"></i>
+            </div>
+            
+            <h4 class="font-cinzel text-xl font-bold text-white mb-2">Career & Business Blueprint</h4>
+            <p class="text-xs text-slate-300 mb-6 leading-relaxed">
+              Job stagnation, corporate politics, promotions, ideal business timing, and foreign relocation / PR prospects.
+            </p>
+
+            <!-- Mode Selector Switch -->
+            <div class="space-y-2 mb-6">
+              <label class="flex items-center justify-between p-3 rounded-xl bg-cosmic-950/70 border border-slate-800 cursor-pointer hover:border-celestial-gold/50 transition">
+                <div class="flex items-center gap-2.5">
+                  <input type="radio" name="careerMode" value="2100" checked onchange="updateServicePrice('career', 2100, 'Chat Consultation')" class="accent-amber-400">
+                  <span class="text-xs text-slate-200">💬 Detailed Chat Session</span>
+                </div>
+                <span class="text-xs font-bold text-amber-300">₹2,100</span>
+              </label>
+
+              <label class="flex items-center justify-between p-3 rounded-xl bg-cosmic-950/70 border border-slate-800 cursor-pointer hover:border-celestial-gold/50 transition">
+                <div class="flex items-center gap-2.5">
+                  <input type="radio" name="careerMode" value="3100" onchange="updateServicePrice('career', 3100, 'Phone Call Consultation')" class="accent-amber-400">
+                  <span class="text-xs text-slate-200">📞 Direct Voice Call (30 min)</span>
+                </div>
+                <span class="text-xs font-bold text-amber-300">₹3,100</span>
+              </label>
+            </div>
+
+            <ul class="text-xs text-slate-300 space-y-2.5 mb-8">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-celestial-gold"></i> Exact timing of job switches</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-celestial-gold"></i> Foreign settlement / 9th & 12th house check</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-celestial-gold"></i> Safe gemstone & mantra recommendations</li>
+            </ul>
+          </div>
+
+          <button onclick="openBookingModal('Career & Business Blueprint', 'career')" class="w-full py-3 rounded-xl bg-cosmic-900 border border-celestial-gold/40 text-celestial-gold font-bold text-xs uppercase tracking-wider hover:bg-celestial-gold hover:text-cosmic-950 transition">
+            Book Career Reading
+          </button>
+        </div>
+
+        <!-- Service 2: Complete Kundli Analysis (FEATURED) -->
+        <div class="glass-card rounded-3xl p-8 border-2 border-celestial-gold relative flex flex-col justify-between shadow-[0_0_35px_rgba(243,201,106,0.2)] scale-105 z-10 bg-gradient-to-b from-[#1c163b] to-[#0c081c]">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 to-yellow-500 text-cosmic-950 text-[10px] font-black uppercase tracking-widest px-4 py-1 rounded-full shadow-md">
+            🔥 Most Popular & Recommended
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between mb-4 mt-2">
+              <span class="text-xs font-bold uppercase tracking-widest text-amber-300 px-3 py-1 rounded-full bg-amber-950/60 border border-amber-500/30">
+                Full Life Matrix
+              </span>
+              <i data-lucide="sparkles" class="w-5 h-5 text-amber-300 animate-bounce"></i>
+            </div>
+            
+            <h4 class="font-cinzel text-xl sm:text-2xl font-bold text-white mb-2">Complete Chart Analysis</h4>
+            <p class="text-xs text-slate-300 mb-6 leading-relaxed">
+              Exhaustive study of all 12 houses, active Mahadashas, planetary yogas, 8th house karmas & lifetime roadmap.
+            </p>
+
+            <!-- Mode Selector Switch -->
+            <div class="space-y-2 mb-6">
+              <label class="flex items-center justify-between p-3 rounded-xl bg-cosmic-950/70 border border-slate-800 cursor-pointer hover:border-celestial-gold transition">
+                <div class="flex items-center gap-2.5">
+                  <input type="radio" name="completeMode" value="3100" onchange="updateServicePrice('complete', 3100, 'Chat Deep Dive')" class="accent-amber-400">
+                  <span class="text-xs text-slate-200">💬 Comprehensive Chat</span>
+                </div>
+                <span class="text-xs font-bold text-amber-300">₹3,100</span>
+              </label>
+
+              <label class="flex items-center justify-between p-3 rounded-xl bg-cosmic-950/70 border border-slate-800 cursor-pointer hover:border-celestial-gold transition">
+                <div class="flex items-center gap-2.5">
+                  <input type="radio" name="completeMode" value="5100" checked onchange="updateServicePrice('complete', 5100, 'Priority Voice Call')" class="accent-amber-400">
+                  <span class="text-xs text-slate-200">📞 Voice Call (45 min)</span>
+                </div>
+                <span class="text-xs font-bold text-amber-300">₹5,100</span>
+              </label>
+
+              <label class="flex items-center justify-between p-3 rounded-xl bg-cosmic-950/70 border border-slate-800 cursor-pointer hover:border-celestial-gold transition">
+                <div class="flex items-center gap-2.5">
+                  <input type="radio" name="completeMode" value="7100" onchange="updateServicePrice('complete', 7100, '1-on-1 Video Session')" class="accent-amber-400">
+                  <span class="text-xs text-slate-200">📹 1-on-1 Live Video (60 min)</span>
+                </div>
+                <span class="text-xs font-bold text-amber-300">₹7,100</span>
+              </label>
+            </div>
+
+            <ul class="text-xs text-slate-300 space-y-2.5 mb-8">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-amber-300"></i> Lifetime Dasha & Gochar transit map</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-amber-300"></i> Marriage, Career, Health & Wealth synthesis</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-amber-300"></i> Direct remedy plan personally written by Garima</li>
+            </ul>
+          </div>
+
+          <button onclick="openBookingModal('Complete Chart Analysis', 'complete')" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-cosmic-950 font-extrabold text-xs uppercase tracking-wider shadow-lg hover:shadow-celestial-gold/50 transition">
+            Book Complete Chart Reading
+          </button>
+        </div>
+
+        <!-- Service 3: Marriage & Compatibility -->
+        <div class="glass-card rounded-3xl p-8 border border-white/10 flex flex-col justify-between hover:border-celestial-gold/50 transition">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold uppercase tracking-widest text-emerald-400 px-3 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/30">
+                Marriage & Love
+              </span>
+              <i data-lucide="heart" class="w-5 h-5 text-emerald-400"></i>
+            </div>
+            
+            <h4 class="font-cinzel text-xl font-bold text-white mb-2">Marriage & Relationship Milan</h4>
+            <p class="text-xs text-slate-300 mb-6 leading-relaxed">
+              Find the right match, resolve marriage delay, analyze Ashtakoot Guna Milan, and resolve emotional incompatibilities.
+            </p>
+
+            <!-- Mode Selector Switch -->
+            <div class="space-y-2 mb-6">
+              <label class="flex items-center justify-between p-3 rounded-xl bg-cosmic-950/70 border border-slate-800 cursor-pointer hover:border-celestial-gold/50 transition">
+                <div class="flex items-center gap-2.5">
+                  <input type="radio" name="marriageMode" value="2100" checked onchange="updateServicePrice('marriage', 2100, 'Chat Consultation')" class="accent-amber-400">
+                  <span class="text-xs text-slate-200">💬 Detailed Chat Session</span>
+                </div>
+                <span class="text-xs font-bold text-amber-300">₹2,100</span>
+              </label>
+
+              <label class="flex items-center justify-between p-3 rounded-xl bg-cosmic-950/70 border border-slate-800 cursor-pointer hover:border-celestial-gold/50 transition">
+                <div class="flex items-center gap-2.5">
+                  <input type="radio" name="marriageMode" value="3100" onchange="updateServicePrice('marriage', 3100, 'Phone Call Consultation')" class="accent-amber-400">
+                  <span class="text-xs text-slate-200">📞 Direct Voice Call (30 min)</span>
+                </div>
+                <span class="text-xs font-bold text-amber-300">₹3,100</span>
+              </label>
+            </div>
+
+            <ul class="text-xs text-slate-300 space-y-2.5 mb-8">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Both partner charts cross-verified</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Manglik & Nadi Dosha practical remedies</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Expected timing & nature of spouse</li>
+            </ul>
+          </div>
+
+          <button onclick="openBookingModal('Marriage & Relationship Milan', 'marriage')" class="w-full py-3 rounded-xl bg-cosmic-900 border border-emerald-400/40 text-emerald-300 font-bold text-xs uppercase tracking-wider hover:bg-emerald-400 hover:text-cosmic-950 transition">
+            Book Marriage Reading
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SACRED APOTHECARY & SHOP PREVIEW -->
+  <section id="shop" class="py-20 px-4 sm:px-6 lg:px-8 bg-cosmic-900/40 border-t border-b border-celestial-gold/15 relative">
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+        <div>
+          <span class="text-xs font-semibold tracking-widest text-celestial-gold uppercase">✦ Hand-Energized Artifacts ✦</span>
+          <h3 class="font-cinzel text-3xl sm:text-4xl font-bold text-white mt-1">
+            Celestial Apothecary & Crystals
+          </h3>
+          <p class="text-slate-400 text-xs sm:text-sm mt-1 max-w-xl">
+            Cleanse spatial currents and protect your aura. Every gemstone and Rudraksha is consecrated through Vedic sound frequencies before dispatch.
+          </p>
+        </div>
+
+        <a href="#consultations" class="inline-flex items-center gap-2 text-xs uppercase font-bold text-amber-300 hover:text-white transition">
+          <span>Need custom crystal recommendation?</span>
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Product 1 -->
+        <div class="glass-card rounded-2xl p-5 border border-white/10 group flex flex-col justify-between">
+          <div>
+            <div class="h-44 rounded-xl bg-gradient-to-tr from-purple-950 to-cosmic-900 border border-purple-500/20 flex items-center justify-center relative overflow-hidden mb-4">
+              <i data-lucide="shield" class="w-16 h-16 text-celestial-purple/60 group-hover:scale-110 transition duration-300"></i>
+              <span class="absolute top-2 right-2 text-[9px] bg-purple-900/80 border border-purple-400/40 text-purple-200 px-2 py-0.5 rounded-full uppercase font-bold">
+                Bestseller
+              </span>
+            </div>
+            <h4 class="font-cinzel text-base font-bold text-white mb-1">Triple Protection Bracelet</h4>
+            <p class="text-[11px] text-slate-400 mb-3">Black Obsidian, Tiger Eye & Hematite layered for grounding against evil-eye.</p>
+          </div>
+          <div class="flex items-center justify-between pt-3 border-t border-white/10">
+            <div>
+              <span class="text-xs text-slate-500 line-through mr-1.5">₹1,299</span>
+              <span class="text-sm font-bold text-amber-300">₹666</span>
+            </div>
+            <button onclick="orderProduct('Triple Protection Bracelet', 666)" class="px-3.5 py-1.5 rounded-lg bg-celestial-gold text-cosmic-950 text-xs font-bold hover:bg-yellow-300 transition">
+              Order
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="glass-card rounded-2xl p-5 border border-white/10 group flex flex-col justify-between">
+          <div>
+            <div class="h-44 rounded-xl bg-gradient-to-tr from-amber-950 to-cosmic-900 border border-amber-500/20 flex items-center justify-center relative overflow-hidden mb-4">
+              <i data-lucide="sparkles" class="w-16 h-16 text-celestial-gold/60 group-hover:scale-110 transition duration-300"></i>
+              <span class="absolute top-2 right-2 text-[9px] bg-amber-900/80 border border-amber-400/40 text-amber-200 px-2 py-0.5 rounded-full uppercase font-bold">
+                Career Luck
+              </span>
+            </div>
+            <h4 class="font-cinzel text-base font-bold text-white mb-1">Leadership Power Mala</h4>
+            <p class="text-[11px] text-slate-400 mb-3">Energized 5-Mukhi Rudraksha with Natural Pyrite beads to accelerate career confidence.</p>
+          </div>
+          <div class="flex items-center justify-between pt-3 border-t border-white/10">
+            <div>
+              <span class="text-xs text-slate-500 line-through mr-1.5">₹1,499</span>
+              <span class="text-sm font-bold text-amber-300">₹888</span>
+            </div>
+            <button onclick="orderProduct('Leadership Power Mala', 888)" class="px-3.5 py-1.5 rounded-lg bg-celestial-gold text-cosmic-950 text-xs font-bold hover:bg-yellow-300 transition">
+              Order
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="glass-card rounded-2xl p-5 border border-white/10 group flex flex-col justify-between">
+          <div>
+            <div class="h-44 rounded-xl bg-gradient-to-tr from-pink-950 to-cosmic-900 border border-pink-500/20 flex items-center justify-center relative overflow-hidden mb-4">
+              <i data-lucide="heart" class="w-16 h-16 text-pink-400/60 group-hover:scale-110 transition duration-300"></i>
+            </div>
+            <h4 class="font-cinzel text-base font-bold text-white mb-1">Rose Quartz Aura Heart</h4>
+            <p class="text-[11px] text-slate-400 mb-3">Natural Madagascar Rose Quartz to dissolve relationship anxiety and restore self-love.</p>
+          </div>
+          <div class="flex items-center justify-between pt-3 border-t border-white/10">
+            <div>
+              <span class="text-xs text-slate-500 line-through mr-1.5">₹999</span>
+              <span class="text-sm font-bold text-amber-300">₹549</span>
+            </div>
+            <button onclick="orderProduct('Rose Quartz Aura Heart', 549)" class="px-3.5 py-1.5 rounded-lg bg-celestial-gold text-cosmic-950 text-xs font-bold hover:bg-yellow-300 transition">
+              Order
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="glass-card rounded-2xl p-5 border border-white/10 group flex flex-col justify-between">
+          <div>
+            <div class="h-44 rounded-xl bg-gradient-to-tr from-cyan-950 to-cosmic-900 border border-cyan-500/20 flex items-center justify-center relative overflow-hidden mb-4">
+              <i data-lucide="flame" class="w-16 h-16 text-cyan-400/60 group-hover:scale-110 transition duration-300"></i>
+            </div>
+            <h4 class="font-cinzel text-base font-bold text-white mb-1">Sage & Camphor Cleanser</h4>
+            <p class="text-[11px] text-slate-400 mb-3">Small-batch sacred botanical blend to vaporize dense spatial currents and stagnant energy.</p>
+          </div>
+          <div class="flex items-center justify-between pt-3 border-t border-white/10">
+            <div>
+              <span class="text-xs text-slate-500 line-through mr-1.5">₹799</span>
+              <span class="text-sm font-bold text-amber-300">₹420</span>
+            </div>
+            <button onclick="orderProduct('Sage & Camphor Cleanser', 420)" class="px-3.5 py-1.5 rounded-lg bg-celestial-gold text-cosmic-950 text-xs font-bold hover:bg-yellow-300 transition">
+              Order
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CLIENT REVIEWS / REAL EXPERIENCES -->
+  <section class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative">
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs font-semibold tracking-widest text-celestial-gold uppercase">✦ Verified Words ✦</span>
+        <h3 class="font-cinzel text-3xl sm:text-4xl font-bold text-white mt-1 mb-3">
+          Transformed Soul Journeys
+        </h3>
+        <p class="text-slate-400 text-xs sm:text-sm">
+          Hear from professionals, seekers, and couples whose paths were illuminated by honest chart calibration.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Review 1 -->
+        <div class="p-6 rounded-3xl glass-card border border-white/10 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center text-amber-400 text-sm gap-1 mb-3">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              <span class="text-[11px] text-slate-400 ml-2 font-sans">Pisces Sun</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed italic mb-4">
+              “I was sceptical at first because of past horrific experiences with astrologers scaring me about Sade Sati. Garima’s session was so logical and calm. She pin-pointed my 8th house career shift down to the exact month!”
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-3 border-t border-white/10">
+            <div class="w-9 h-9 rounded-full bg-purple-900 text-celestial-amethyst font-bold flex items-center justify-center text-xs">
+              SI
+            </div>
+            <div>
+              <div class="text-xs font-bold text-white">Swati Iyer</div>
+              <div class="text-[10px] text-slate-400">Senior Product Designer, Bengaluru</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="p-6 rounded-3xl glass-card border border-white/10 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center text-amber-400 text-sm gap-1 mb-3">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              <span class="text-[11px] text-slate-400 ml-2 font-sans">Virgo Ascendant</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed italic mb-4">
+              “Our marriage was undergoing unbearable delays and families were confused. The matchmaking consultation broke down emotional chemistry rather than blind points. Her remedies brought peace in weeks.”
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-3 border-t border-white/10">
+            <div class="w-9 h-9 rounded-full bg-amber-900 text-celestial-gold font-bold flex items-center justify-center text-xs">
+              DM
+            </div>
+            <div>
+              <div class="text-xs font-bold text-white">David & Pooja Miller</div>
+              <div class="text-[10px] text-slate-400">Toronto, Canada</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="p-6 rounded-3xl glass-card border border-white/10 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center text-amber-400 text-sm gap-1 mb-3">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              <span class="text-[11px] text-slate-400 ml-2 font-sans">Scorpio Moon</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed italic mb-4">
+              “The Triple Protection bracelet is genuinely potent. Combined with Garima's personalized daily mantra, my heavy mental fog cleared completely. Truly grateful for astrohealer4U.”
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-3 border-t border-white/10">
+            <div class="w-9 h-9 rounded-full bg-teal-900 text-teal-300 font-bold flex items-center justify-center text-xs">
+              ER
+            </div>
+            <div>
+              <div class="text-xs font-bold text-white">Emily Rose</div>
+              <div class="text-[10px] text-slate-400">London, UK</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FREQUENTLY ASKED CELESTIAL QUESTIONS (FAQ) -->
+  <section class="py-20 px-4 sm:px-6 lg:px-8 bg-cosmic-900/30 border-t border-white/10 relative">
+    <div class="max-w-4xl mx-auto">
+      
+      <div class="text-center mb-14">
+        <span class="text-xs font-semibold tracking-widest text-celestial-gold uppercase">✦ Clarification & Ethics ✦</span>
+        <h3 class="font-cinzel text-3xl font-bold text-white mt-1">Celestial FAQ Registry</h3>
+        <p class="text-slate-400 text-xs sm:text-sm mt-1">Everything you need to know about preparing for your session.</p>
+      </div>
+
+      <div class="space-y-4" id="faqAccordion">
+        
+        <!-- Item 1 -->
+        <div class="glass-card rounded-2xl border border-white/10 overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full p-5 text-left flex items-center justify-between text-white font-semibold text-sm hover:text-celestial-gold transition">
+            <span>What if I do not have my exact birth time?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content hidden px-5 pb-5 text-xs text-slate-300 leading-relaxed border-t border-white/5 pt-3">
+            Garima performs Birth Time Rectification (BTR) based on key life events (graduation dates, marriage, past injuries or promotions) to calibrate your Ascendant degree accurately before conducting the reading.
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="glass-card rounded-2xl border border-white/10 overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full p-5 text-left flex items-center justify-between text-white font-semibold text-sm hover:text-celestial-gold transition">
+            <span>How does the 1-on-1 Consultation take place?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content hidden px-5 pb-5 text-xs text-slate-300 leading-relaxed border-t border-white/5 pt-3">
+            Consultations are held securely over WhatsApp Voice/Video or Google Meet based on your booked tier. Following the session, you receive a concise written remedy summary and auspicious timeline markers.
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="glass-card rounded-2xl border border-white/10 overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full p-5 text-left flex items-center justify-between text-white font-semibold text-sm hover:text-celestial-gold transition">
+            <span>Are the remedies costly or complicated rituals?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content hidden px-5 pb-5 text-xs text-slate-300 leading-relaxed border-t border-white/5 pt-3">
+            Absolutely not. We believe that true Vedic healing begins with awareness, sound frequency (mantras), donation/service (daan), and energetic discipline. We do not push expensive pujas.
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="glass-card rounded-2xl border border-white/10 overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full p-5 text-left flex items-center justify-between text-white font-semibold text-sm hover:text-celestial-gold transition">
+            <span>What is the significance of "Only I know what you are hiding"?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content hidden px-5 pb-5 text-xs text-slate-300 leading-relaxed border-t border-white/5 pt-3">
+            In Vedic astrology, the 8th and 12th houses govern things we hide from family, partners, and society — secret fears, hidden desires, ancestral contracts, and financial debts. Garima decodes these specific houses to provide clarity where nobody else can see.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FINAL CTA STRIP -->
+  <section class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-purple-950 via-cosmic-900 to-amber-950 border-t border-celestial-gold/20 text-center relative overflow-hidden">
+    <div class="max-w-4xl mx-auto relative z-10">
+      <h3 class="font-cinzel text-3xl sm:text-5xl font-extrabold text-white mb-4">
+        Ready to Unveil Your Cosmic Blueprint?
+      </h3>
+      <p class="text-slate-300 text-sm sm:text-base mb-8 max-w-xl mx-auto">
+        Step out of uncertainty. Schedule your confidential consultation with Garima Verma today.
+      </p>
+      <a href="#consultations" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-celestial-gold text-cosmic-950 font-extrabold text-xs uppercase tracking-wider shadow-[0_0_30px_rgba(243,201,106,0.6)] hover:scale-105 transition">
+        <span>Reserve Your 1-on-1 Consultation</span>
+        <i data-lucide="sparkle" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-cosmic-950 border-t border-white/10 py-12 px-4 sm:px-6 lg:px-8 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+      
+      <!-- Col 1 -->
+      <div class="space-y-3">
+        <div class="font-cinzel font-bold text-lg text-white">
+          astrohealer<span class="text-celestial-gold font-cinzelDeco">4U</span>
+        </div>
+        <p class="text-[11px] leading-relaxed text-slate-400">
+          ✦ Only I know what you are hiding 💫<br>
+          Accurate and trusted astrology, chart analysis, and personal guidance. Unlocking your cosmic blueprint with compassion and spiritual ethics.
+        </p>
+      </div>
+
+      <!-- Col 2 -->
+      <div>
+        <h5 class="text-white font-cinzel font-bold uppercase tracking-wider mb-3">Consultations</h5>
+        <ul class="space-y-2 text-[11px]">
+          <li><a href="#consultations" class="hover:text-celestial-gold transition">Complete Chart Analysis</a></li>
+          <li><a href="#consultations" class="hover:text-celestial-gold transition">Career & Foreign Relocation</a></li>
+          <li><a href="#consultations" class="hover:text-celestial-gold transition">Kundli Milan & Marriage</a></li>
+          <li><a href="#consultations" class="hover:text-celestial-gold transition">8th House Karmic Clearance</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3 -->
+      <div>
+        <h5 class="text-white font-cinzel font-bold uppercase tracking-wider mb-3">Quick Navigation</h5>
+        <ul class="space-y-2 text-[11px]">
+          <li><a href="#oracle" class="hover:text-celestial-gold transition">Daily Tarot Oracle</a></li>
+          <li><a href="#zodiac" class="hover:text-celestial-gold transition">Zodiac Transit Forecast</a></li>
+          <li><a href="#blueprint" class="hover:text-celestial-gold transition">Lagna Kundli Matrix</a></li>
+          <li><a href="#shop" class="hover:text-celestial-gold transition">Celestial Apothecary</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4 -->
+      <div>
+        <h5 class="text-white font-cinzel font-bold uppercase tracking-wider mb-3">Contact & Sanctuary</h5>
+        <p class="text-[11px] text-slate-400 leading-relaxed mb-3">
+          Direct Inquiries & WhatsApp Consultations:<br>
+          <span class="text-amber-300 font-medium">support@astrohealer4u.in</span>
+        </p>
+        <div class="flex items-center gap-3">
+          <a href="https://www.youtube.com/@Astrohealer4uByGarimaVerma" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-cosmic-900 border border-slate-700 flex items-center justify-center text-slate-300 hover:text-red-400 hover:border-red-400 transition" title="YouTube Channel">
+            <i data-lucide="youtube" class="w-4 h-4"></i>
+          </a>
+          <a href="#" class="w-8 h-8 rounded-full bg-cosmic-900 border border-slate-700 flex items-center justify-center text-slate-300 hover:text-pink-400 hover:border-pink-400 transition" title="Instagram">
+            <i data-lucide="instagram" class="w-4 h-4"></i>
+          </a>
+          <a href="#" class="w-8 h-8 rounded-full bg-cosmic-900 border border-slate-700 flex items-center justify-center text-slate-300 hover:text-emerald-400 hover:border-emerald-400 transition" title="WhatsApp Direct">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="max-w-7xl mx-auto pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 gap-4">
+      <p>© 2026 astrohealer4U. All rights reserved. Designed with celestial precision.</p>
+      <div class="flex gap-4">
+        <a href="#" class="hover:underline">Privacy Policy</a>
+        <a href="#" class="hover:underline">Terms of Consultation</a>
+        <a href="#" class="hover:underline">Disclaimer</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOOKING INTERACTION MODAL -->
+  <div id="bookingModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-cosmic-950/80 backdrop-blur-md">
+    <div class="glass-panel w-full max-w-lg rounded-3xl p-6 sm:p-8 border-2 border-celestial-gold/40 relative shadow-2xl overflow-y-auto max-h-[90vh]">
+      
+      <!-- Close button -->
+      <button onclick="closeBookingModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white p-1">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="mb-5">
+        <span class="text-[10px] tracking-widest text-celestial-gold uppercase font-bold">Consultation Reservation</span>
+        <h3 id="modalServiceTitle" class="font-cinzel text-xl font-bold text-white mt-0.5">Complete Chart Analysis</h3>
+        <p class="text-xs text-slate-300 mt-1" id="modalServiceDetail">Mode: Priority Voice Call • Amount: ₹5,100</p>
+      </div>
+
+      <form id="bookingForm" onsubmit="handleBookingSubmit(event)" class="space-y-3.5 text-xs">
+        <div>
+          <label class="block text-slate-300 mb-1 font-medium">Your Full Name</label>
+          <input type="text" id="bookName" required placeholder="Enter your name" class="w-full bg-cosmic-950/90 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-celestial-gold">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 mb-1 font-medium">Date of Birth</label>
+            <input type="date" id="bookDob" required class="w-full bg-cosmic-950/90 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-celestial-gold">
+          </div>
+          <div>
+            <label class="block text-slate-300 mb-1 font-medium">Birth Time</label>
+            <input type="time" id="bookTime" required class="w-full bg-cosmic-950/90 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-celestial-gold">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-1 font-medium">Birth City / Country</label>
+          <input type="text" id="bookCity" required placeholder="e.g. Pune, Maharashtra" class="w-full bg-cosmic-950/90 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-celestial-gold">
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-1 font-medium">WhatsApp Contact Number</label>
+          <input type="tel" id="bookPhone" required placeholder="+91 98765 43210" class="w-full bg-cosmic-950/90 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-celestial-gold">
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-1 font-medium">Key Question or Concern (Optional)</label>
+          <textarea id="bookNote" rows="2" placeholder="e.g. Asking regarding promotion timeline in current company..." class="w-full bg-cosmic-950/90 border border-slate-700 rounded-xl px-3.5 py-2 text-white focus:outline-none focus:border-celestial-gold"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-celestial-gold via-yellow-400 to-amber-500 text-cosmic-950 font-bold uppercase tracking-wider text-xs shadow-lg hover:shadow-celestial-gold/50 transition mt-2">
+          Confirm & Connect With Garima →
+        </button>
+      </form>
+
+      <!-- Confirmation Notice -->
+      <div id="bookingSuccessNotice" class="hidden text-center py-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3">
+          <i data-lucide="check-circle-2" class="w-7 h-7"></i>
+        </div>
+        <h4 class="font-cinzel text-lg font-bold text-white mb-1">Celestial Slot Initiated!</h4>
+        <p class="text-xs text-slate-300 mb-4">
+          Your coordinates have been recorded. You are being redirected to finalize slot confirmation.
+        </p>
+        <button onclick="closeBookingModal()" class="px-5 py-2 rounded-xl bg-cosmic-900 border border-slate-700 text-slate-300 text-xs font-semibold">
+          Close Window
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- IN-PAGE GENERIC TOAST NOTIFIER -->
+  <div id="toastMessage" class="fixed bottom-6 right-6 z-50 hidden glass-panel border border-celestial-gold/40 text-amber-200 text-xs px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-2">
+    <i data-lucide="sparkles" class="w-4 h-4 text-celestial-gold"></i>
+    <span id="toastText">Action completed successfully.</span>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC ENGINE -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // THEME CONTROLLER ENGINE
+    function setTheme(themeName, btn) {
+      if (themeName === 'default') {
+        document.documentElement.removeAttribute('data-theme');
+      } else {
+        document.documentElement.setAttribute('data-theme', themeName);
+      }
+
+      document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('theme-active-ring'));
+      if (btn) btn.classList.add('theme-active-ring');
+
+      showToast(`Celestial Theme Switched: ${themeName === 'default' ? 'Midnight Stardust' : themeName === 'nebula' ? 'Ethereal Nebula' : 'Solstice Gold'}`);
+      playHarmonicChime(528);
+    }
+
+    // 1. STARFIELD PARTICLES BACKGROUND WITH CONSTELLATION NODES
+    const canvas = document.getElementById('starfield');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+    const numStars = 135;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    for (let i = 0; i < numStars; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 1.8 + 0.4,
+        alpha: Math.random() * 0.8 + 0.2,
+        speed: Math.random() * 0.22 + 0.04
+      });
+    }
+
+    function renderStarfield() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw subtle connecting constellation strands
+      for (let i = 0; i < stars.length; i++) {
+        for (let j = i + 1; j < stars.length; j++) {
+          const dx = stars[i].x - stars[j].x;
+          const dy = stars[i].y - stars[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 75) {
+            ctx.strokeStyle = `rgba(246, 207, 122, ${0.12 * (1 - dist / 75)})`;
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(stars[i].x, stars[i].y);
+            ctx.lineTo(stars[j].x, stars[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      for (let star of stars) {
+        ctx.fillStyle = `rgba(246, 207, 122, ${star.alpha})`;
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        star.y -= star.speed;
+        if (star.y < 0) {
+          star.y = canvas.height;
+          star.x = Math.random() * canvas.width;
+        }
+      }
+      requestAnimationFrame(renderStarfield);
+    }
+    requestAnimationFrame(renderStarfield);
+
+    // 2. AMBIENT CELESTIAL SOUND ENGINE (Web Audio API)
+    let audioCtx = null;
+    let isPlayingAudio = false;
+    let synthInterval = null;
+
+    function toggleCelestialAudio() {
+      const soundIcon = document.getElementById('soundIcon');
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+      }
+
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      if (!isPlayingAudio) {
+        isPlayingAudio = true;
+        soundIcon.setAttribute('data-lucide', 'volume-2');
+        lucide.createIcons();
+        playHarmonicChime(432); // Healing Solfeggio frequency
+        synthInterval = setInterval(() => {
+          if (isPlayingAudio) {
+            const freqs = [432, 528, 639, 396, 528];
+            const randomFreq = freqs[Math.floor(Math.random() * freqs.length)];
+            playHarmonicChime(randomFreq);
+          }
+        }, 3800);
+        showToast("✦ Celestial 432Hz ambient frequency activated");
+      } else {
+        isPlayingAudio = false;
+        clearInterval(synthInterval);
+        soundIcon.setAttribute('data-lucide', 'volume-x');
+        lucide.createIcons();
+        showToast("Audio muted");
+      }
+    }
+
+    function playHarmonicChime(freq) {
+      if (!audioCtx) return;
+      try {
+        const osc = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+        gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+        gainNode.gain.linearRampToValueAtTime(0.08, audioCtx.currentTime + 1.2);
+        gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 3.8);
+
+        osc.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 4.0);
+      } catch (e) {
+        console.error("Audio WebAPI exception", e);
+      }
+    }
+
+    // 3. ORACLE TAROT INTERACTIONS
+    const oracleCards = [
+      {
+        title: "The Luminary Star",
+        element: "Ether",
+        text: "A beacon of hope, clarity, and unexpected breakthroughs. Trust that the Universe is paving your roadmap right now.",
+        remedy: "Offer water to Surya at dawn; wear shades of yellow or gold."
+      },
+      {
+        title: "The Divine Empress",
+        element: "Earth",
+        text: "Nurture your physical body and creative projects. Great manifestations demand patience, sensory comfort, and self-kindness.",
+        remedy: "Spend 10 minutes barefoot on soil or grass; hydrate with silver vessel water."
+      },
+      {
+        title: "The Mystic Sage",
+        element: "Void",
+        text: "A call to pause and reflect. Silence external noises. Your subconscious currently holds the exact keys you seek.",
+        remedy: "Practice 5-minute Chandra pranayama before sleep tonight."
+      }
+    ];
+
+    function flipOracleCard(slotElement, index) {
+      const inner = slotElement.querySelector('.oracle-card-inner');
+      inner.classList.toggle('rotate-y-180');
+      if (inner.classList.contains('rotate-y-180')) {
+        playHarmonicChime(528);
+      }
+    }
+
+    function reshuffleOracle() {
+      const cards = document.querySelectorAll('.oracle-card-inner');
+      cards.forEach(card => card.classList.remove('rotate-y-180'));
+      showToast("Sacred deck shuffled. Choose your card.");
+    }
+
+    // 3.5 DYNAMIC CONSULTATION STATE & FILTER ENGINE (NEW)
+    const activePlanSelection = {
+      c1: { title: 'Career & Business Consultation', mode: 'Detailed Chat', price: 2100 },
+      c2: { title: 'Complete Analysis of Chart', mode: 'Priority Voice Call (45 min)', price: 5100 },
+      c3: { title: 'Marriage Consultation', mode: 'Detailed Chat', price: 2100 },
+      c4: { title: 'Foreign PR & Relocation', mode: 'Detailed Chat', price: 2100 },
+      c5: { title: 'Finance & Wealth Alignment', mode: 'Detailed Chat', price: 2100 },
+      c6: { title: 'Pregnancy & Santan Guidance', mode: 'Detailed Chat', price: 2100 },
+      c7: { title: 'Vastu Shastra & Space Healing', mode: 'Online Floorplan Audit', price: 3100 },
+      c8: { title: 'Gemstone & Rudraksha Testing', mode: 'Prescription Report', price: 1500 },
+      c9: { title: 'Health & Emotional Healing', mode: 'Detailed Chat', price: 2100 },
+      c10: { title: 'Yearly Varshphal Transit', mode: 'Detailed Annual Report', price: 3500 },
+    };
+
+    function setCustomPlan(key, title, mode, price) {
+      activePlanSelection[key] = { title, mode, price };
+    }
+
+    function bookCustomPlan(key, fallbackTitle, fallbackPrice, fallbackMode) {
+      const plan = activePlanSelection[key] || { title: fallbackTitle, mode: fallbackMode, price: fallbackPrice };
+      document.getElementById('modalServiceTitle').innerText = plan.title;
+      document.getElementById('modalServiceDetail').innerText = `Selected Mode: ${plan.mode} • Fee: ₹${plan.price.toLocaleString('en-IN')}`;
+      document.getElementById('bookingForm').classList.remove('hidden');
+      document.getElementById('bookingSuccessNotice').classList.add('hidden');
+      document.getElementById('bookingModal').classList.remove('hidden');
+    }
+
+    function filterConsultations(cat, btn) {
+      const buttons = document.querySelectorAll('.cons-filter');
+      buttons.forEach(b => {
+        b.className = "cons-filter px-4 py-2 rounded-full text-xs font-semibold transition glass-panel text-slate-300 hover:text-white border border-white/10";
+      });
+      btn.className = "cons-filter px-4 py-2 rounded-full text-xs font-semibold transition bg-celestial-gold text-cosmic-950 shadow-md";
+
+      const cards = document.querySelectorAll('.cons-card');
+      cards.forEach(card => {
+        const itemCategory = card.getAttribute('data-category');
+        if (cat === 'all' || itemCategory === cat) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // 4. 12 ZODIAC ORACLE MATRIX
+    const zodiacData = [
+      { id: "aries", name: "Aries", symbol: "♈", element: "Fire", planet: "Mars", vibration: "92%", color: "Amber Glow", lucky: "7, 14, 22", synergy: "Leo & Libra", desc: "Your governing rulers suggest a sudden burst of communication. An unexpected email or cosmic breakthrough is disrupting your stagnation." },
+      { id: "taurus", name: "Taurus", symbol: "♉", element: "Earth", planet: "Venus", vibration: "88%", color: "Emerald Green", lucky: "6, 15, 24", synergy: "Virgo & Capricorn", desc: "Venus brings financial equilibrium. A delayed payment or contract negotiation will lean in your favor over the next lunar cycle." },
+      { id: "gemini", name: "Gemini", symbol: "♊", element: "Air", planet: "Mercury", vibration: "95%", color: "Sky Cyan", lucky: "5, 14, 23", synergy: "Libra & Aquarius", desc: "Mercury activates your intellect. Clear up pending misunderstandings in your relationship or career network today." },
+      { id: "cancer", name: "Cancer", symbol: "♋", element: "Water", planet: "Moon", vibration: "84%", color: "Silver Pearl", lucky: "2, 11, 20", synergy: "Scorpio & Pisces", desc: "The Moon is softening your intuition. Do not ignore gut feelings regarding people offering dubious business bargains." },
+      { id: "leo", name: "Leo", symbol: "♌", element: "Fire", planet: "Sun", vibration: "96%", color: "Solar Gold", lucky: "1, 10, 19", synergy: "Aries & Sagittarius", desc: "Radiance and leadership awaken. Stand tall in professional meetings; your aura is commanding natural respect right now." },
+      { id: "virgo", name: "Virgo", symbol: "♍", element: "Earth", planet: "Mercury", vibration: "90%", color: "Olive Green", lucky: "5, 12, 27", synergy: "Taurus & Capricorn", desc: "Organize what has felt chaotic. Small administrative changes will free up massive emotional bandwidth." },
+      { id: "libra", name: "Libra", symbol: "♎", element: "Air", planet: "Venus", vibration: "91%", color: "Pastel Rose", lucky: "6, 15, 33", synergy: "Gemini & Aquarius", desc: "A decisive turning point in your love life or joint venture. Choose inner harmony over pleasing others." },
+      { id: "scorpio", name: "Scorpio", symbol: "♏", element: "Water", planet: "Mars/Ketu", vibration: "97%", color: "Deep Crimson", lucky: "8, 17, 26", synergy: "Cancer & Pisces", desc: "The 8th house master sign. You are shedding a skin that no longer fits. Spiritual alchemy is at an all-time peak." },
+      { id: "sagittarius", name: "Sagittarius", symbol: "♐", element: "Fire", planet: "Jupiter", vibration: "93%", color: "Royal Saffron", lucky: "3, 12, 21", synergy: "Aries & Leo", desc: "Foreign travel, legal matters, and philosophical expansion show strong green lights. Broaden your horizons." },
+      { id: "capricorn", name: "Capricorn", symbol: "♑", element: "Earth", planet: "Saturn", vibration: "89%", color: "Obsidian Black", lucky: "4, 13, 22", synergy: "Taurus & Virgo", desc: "Saturn rewards your silent persistence. A legacy milestone or property matter begins to unfreeze." },
+      { id: "aquarius", name: "Aquarius", symbol: "♒", element: "Air", planet: "Saturn/Rahu", vibration: "94%", color: "Electric Violet", lucky: "8, 17, 35", synergy: "Gemini & Libra", desc: "Sudden eureka insights. Your ideas will seem strange to average minds; trust the future you are sensing." },
+      { id: "pisces", name: "Pisces", symbol: "♓", element: "Water", planet: "Jupiter", vibration: "98%", color: "Seafoam Turquoise", lucky: "3, 9, 18", synergy: "Cancer & Scorpio", desc: "Deep mystical sensitivity. Cleanse your bedroom with sage and record your dreams upon waking." }
+    ];
+
+    let selectedZodiac = zodiacData[0];
+
+    function initZodiacPills() {
+      const container = document.getElementById('zodiacPills');
+      container.innerHTML = zodiacData.map((z, i) => `
+        <button onclick="selectZodiac('${z.id}')" class="zodiac-pill px-4 py-2 rounded-2xl text-xs font-semibold whitespace-nowrap transition flex items-center gap-1.5 ${i === 0 ? 'bg-celestial-gold text-cosmic-950 shadow-md font-bold' : 'glass-panel text-slate-300 hover:text-white border border-white/10'}">
+          <span>${z.symbol}</span>
+          <span>${z.name}</span>
+        </button>
+      `).join('');
+      renderZodiacDetail();
+    }
+
+    function selectZodiac(id) {
+      selectedZodiac = zodiacData.find(z => z.id === id);
+      const buttons = document.querySelectorAll('.zodiac-pill');
+      buttons.forEach(btn => {
+        if (btn.innerText.includes(selectedZodiac.name)) {
+          btn.className = "zodiac-pill px-4 py-2 rounded-2xl text-xs whitespace-nowrap transition flex items-center gap-1.5 bg-celestial-gold text-cosmic-950 shadow-md font-bold";
+        } else {
+          btn.className = "zodiac-pill px-4 py-2 rounded-2xl text-xs whitespace-nowrap transition flex items-center gap-1.5 glass-panel text-slate-300 hover:text-white border border-white/10";
+        }
+      });
+      renderZodiacDetail();
+    }
+
+    function renderZodiacDetail() {
+      const panel = document.getElementById('zodiacDetailPanel');
+      panel.innerHTML = `
+        <div class="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-white/10 gap-4">
+          <div class="flex items-center gap-4">
+            <div class="w-16 h-16 rounded-2xl bg-cosmic-950 border-2 border-celestial-gold/50 flex items-center justify-center text-3xl text-celestial-gold">
+              ${selectedZodiac.symbol}
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h4 class="font-cinzel text-2xl font-bold text-white">${selectedZodiac.name}</h4>
+                <span class="text-[10px] px-2 py-0.5 rounded-full bg-purple-900/40 text-purple-200 border border-purple-500/30 uppercase tracking-widest">${selectedZodiac.element} Element</span>
+              </div>
+              <p class="text-xs text-slate-400 mt-0.5">Governing Ruler: <span class="text-amber-300 font-medium">${selectedZodiac.planet}</span></p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="text-right">
+              <div class="text-xs text-slate-400 uppercase tracking-wider">Aura Vibration</div>
+              <div class="text-xl font-bold text-emerald-400 font-cinzel">${selectedZodiac.vibration}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 py-6 border-b border-white/10 text-xs">
+          <div>
+            <span class="text-slate-400 block uppercase tracking-wider text-[10px]">Aura Color</span>
+            <span class="text-white font-semibold">${selectedZodiac.color}</span>
+          </div>
+          <div>
+            <span class="text-slate-400 block uppercase tracking-wider text-[10px]">Lucky Numbers</span>
+            <span class="text-white font-semibold">${selectedZodiac.lucky}</span>
+          </div>
+          <div>
+            <span class="text-slate-400 block uppercase tracking-wider text-[10px]">High Synergy Sign</span>
+            <span class="text-amber-300 font-semibold">${selectedZodiac.synergy}</span>
+          </div>
+        </div>
+
+        <div class="pt-6">
+          <h5 class="text-xs font-bold text-celestial-gold uppercase tracking-wider mb-2 flex items-center gap-1.5">
+            <i data-lucide="compass" class="w-3.5 h-3.5"></i>
+            <span>Current Intuitive Transit Guidance</span>
+          </h5>
+          <p class="text-sm text-slate-200 leading-relaxed italic">
+            “${selectedZodiac.desc}”
+          </p>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+    initZodiacPills();
+
+    // 5. PROCEDURAL KUNDLI ENGINE
+    function calculateNatalChart() {
+      const name = document.getElementById('natalName').value || "Seeker";
+      const dob = document.getElementById('natalDob').value;
+      const place = document.getElementById('natalPlace').value || "Coordinates";
+      const focus = document.getElementById('natalFocus').value;
+
+      document.getElementById('outputTitle').innerText = `${name}'s Vedic Blueprint`;
+      document.getElementById('outputSubtitle').innerText = `${dob} • ${place}`;
+
+      // Dynamically alter chart aspects based on selected focus
+      const svgAscSign = document.getElementById('svgAscSign');
+      const svgKamaSign = document.getElementById('svgKamaSign');
+      const dashaVal = document.getElementById('dashaValue');
+      const house8Val = document.getElementById('house8Value');
+
+      if (focus === 'career') {
+        svgAscSign.textContent = "Mars / Aries 1H";
+        svgKamaSign.textContent = "Sun ☉ 10H Peak";
+        dashaVal.textContent = "Mars Mahadasha - Sun Pratyantar";
+        house8Val.textContent = "High Executive Authority / Relocation Imminent";
+      } else if (focus === 'marriage') {
+        svgAscSign.textContent = "Venus / Libra 1H";
+        svgKamaSign.textContent = "Jupiter ♃ 7H Aspect";
+        dashaVal.textContent = "Venus Mahadasha - Mercury Antardasha";
+        house8Val.textContent = "Harmonious Union / Karmic Resolution in 2026";
+      } else if (focus === 'wealth') {
+        svgAscSign.textContent = "Ketu / Scorpio 1H";
+        svgKamaSign.textContent = "Mercury ☿ 8th House";
+        dashaVal.textContent = "Rahu Mahadasha - Ketu Antardasha";
+        house8Val.textContent = "Sudden Gains / Unblocking Inherited Assets";
+      } else {
+        svgAscSign.textContent = "Jupiter / Pisces 1H";
+        svgKamaSign.textContent = "Moon ☽ 4th House";
+        dashaVal.textContent = "Jupiter Mahadasha - Saturn Dasha";
+        house8Val.textContent = "Spiritual Awakening / Intuitive Healing Active";
+      }
+
+      playHarmonicChime(639);
+      showToast(`Natal matrix calculated for ${name}`);
+    }
+
+    function shareKundliSummary() {
+      const name = document.getElementById('natalName').value || "Seeker";
+      const dummySummary = `astrohealer4U Kundli Coordinates for ${name}: Decoded by Garima Verma. Visit https://www.astrohealer4u.in/ to book 1-on-1 reading.`;
+      
+      const tempInput = document.createElement("input");
+      tempInput.value = dummySummary;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempInput);
+
+      showToast("✦ Blueprint summary copied to clipboard!");
+    }
+
+    // 6. CONSULTATION PRICING STATE & MODAL HANDLER
+    const serviceState = {
+      career: { title: "Career & Business Blueprint", mode: "Detailed Chat Session", price: 2100 },
+      complete: { title: "Complete Chart Analysis", mode: "Voice Call (45 min)", price: 5100 },
+      marriage: { title: "Marriage & Relationship Milan", mode: "Detailed Chat Session", price: 2100 }
+    };
+
+    function updateServicePrice(key, price, mode) {
+      serviceState[key].price = price;
+      serviceState[key].mode = mode;
+    }
+
+    function openBookingModal(title, key) {
+      const data = serviceState[key] || { title, mode: "Personalized Consultation", price: 3100 };
+      document.getElementById('modalServiceTitle').innerText = data.title;
+      document.getElementById('modalServiceDetail').innerText = `Selected Mode: ${data.mode} • Fee: ₹${data.price.toLocaleString('en-IN')}`;
+      
+      document.getElementById('bookingForm').classList.remove('hidden');
+      document.getElementById('bookingSuccessNotice').classList.add('hidden');
+      document.getElementById('bookingModal').classList.remove('hidden');
+    }
+
+    function closeBookingModal() {
+      document.getElementById('bookingModal').classList.add('hidden');
+    }
+
+    function handleBookingSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('bookName').value;
+      const phone = document.getElementById('bookPhone').value;
+      const serviceTitle = document.getElementById('modalServiceTitle').innerText;
+
+      document.getElementById('bookingForm').classList.add('hidden');
+      document.getElementById('bookingSuccessNotice').classList.remove('hidden');
+      playHarmonicChime(528);
+
+      // Construct direct WhatsApp guidance message
+      const whatsappText = encodeURIComponent(`Hello Garima Ji, I would like to book the consultation for: "${serviceTitle}" from astrohealer4U. My Name: ${name}, Phone: ${phone}. Please confirm slot availability.`);
+      
+      setTimeout(() => {
+        window.open(`https://wa.me/919999999999?text=${whatsappText}`, '_blank');
+      }, 1600);
+    }
+
+    function orderProduct(title, price) {
+      showToast(`Selected "${title}" (₹${price}). Initiating dispatch...`);
+      openBookingModal(`Sacred Artifact: ${title}`, 'complete');
+      document.getElementById('modalServiceDetail').innerText = `Blessed Artifact • Amount: ₹${price}`;
+    }
+
+    // 7. FAQ ACCORDION
+    function toggleFaq(btn) {
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('[data-lucide="chevron-down"]');
+      const isHidden = content.classList.contains('hidden');
+
+      // Close all
+      document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
+      document.querySelectorAll('#faqAccordion [data-lucide="chevron-down"]').forEach(i => i.style.transform = 'rotate(0deg)');
+
+      if (isHidden) {
+        content.classList.remove('hidden');
+        if (icon) icon.style.transform = 'rotate(180deg)';
+      }
+    }
+
+    // 8. MOBILE NAV TOGGLE
+    function toggleMobileNav() {
+      const nav = document.getElementById('mobileNav');
+      nav.classList.toggle('hidden');
+    }
+
+    // 9. TOAST NOTIFIER
+    function showToast(msg) {
+      const toast = document.getElementById('toastMessage');
+      const text = document.getElementById('toastText');
+      text.innerText = msg;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3500);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+@import "tailwindcss";
+
+@theme {
+  --font-cinzel: "Cinzel", serif;
+  --font-cinzel-deco: "Cinzel Decorative", serif;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+
+  --color-cosmic-950: var(--bg-cosmic-950, #040209);
+  --color-cosmic-900: var(--bg-cosmic-900, #0a0718);
+  --color-cosmic-850: var(--bg-cosmic-850, #110d29);
+  --color-cosmic-800: var(--bg-cosmic-800, #171238);
+  --color-cosmic-700: #251c59;
+
+  /* Refined, softer celestial tones (no harsh neon) */
+  --color-celestial-gold: var(--color-accent-gold, #f5d07f);
+  --color-celestial-bright-gold: #f8db8c;
+  --color-celestial-purple: #9d71e8;
+  --color-celestial-amethyst: #c4a1f5;
+  --color-celestial-teal: #6ea8d9;
+  --color-celestial-glow: rgba(245, 208, 127, 0.16);
+
+  --animate-spin-slow: spin 45s linear infinite;
+  --animate-spin-reverse-slow: spinReverse 50s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-glow: pulseGlow 4s ease-in-out infinite;
+  --animate-shimmer: shimmer 5s ease-in-out infinite;
+
+  @keyframes spinReverse {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.03); }
+  }
+  @keyframes shimmer {
+    0%, 100% { opacity: 0.85; filter: brightness(1); }
+    50% { opacity: 1; filter: brightness(1.15) drop-shadow(0 0 10px rgba(245,208,127,0.3)); }
+  }
+}
+
+/* Dynamic Soft Cosmic Theme Variables */
+:root {
+  --bg-cosmic-950: #05030d;
+  --bg-cosmic-900: #0a0718;
+  --bg-cosmic-850: #100c25;
+  --bg-cosmic-800: #161133;
+  --color-accent-gold: #f5d07f;
+  --theme-glow-1: rgba(135, 85, 215, 0.14);
+  --theme-glow-2: rgba(245, 208, 127, 0.10);
+  --theme-border: rgba(245, 208, 127, 0.12);
+}
+
+[data-theme="nebula"] {
+  --bg-cosmic-950: #030514;
+  --bg-cosmic-900: #060b20;
+  --bg-cosmic-850: #0a1130;
+  --bg-cosmic-800: #0f1842;
+  --color-accent-gold: #5db9e6;
+  --theme-glow-1: rgba(93, 185, 230, 0.16);
+  --theme-glow-2: rgba(157, 113, 232, 0.14);
+  --theme-border: rgba(93, 185, 230, 0.14);
+}
+
+[data-theme="solstice"] {
+  --bg-cosmic-950: #0b0705;
+  --bg-cosmic-900: #140d08;
+  --bg-cosmic-850: #1e130c;
+  --bg-cosmic-800: #291a10;
+  --color-accent-gold: #f3be4d;
+  --theme-glow-1: rgba(243, 190, 77, 0.15);
+  --theme-glow-2: rgba(217, 119, 6, 0.12);
+  --theme-border: rgba(243, 190, 77, 0.14);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #05030b;
+}
+::-webkit-scrollbar-thumb {
+  background: #251c45;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-gold);
+}
+
+.font-cinzel {
+  font-family: var(--font-cinzel), 'Cinzel', serif;
+}
+
+.font-cinzelDeco {
+  font-family: var(--font-cinzel-deco), 'Cinzel Decorative', serif;
+}
+
+body {
+  font-family: var(--font-sans), 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-cosmic-950);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #FFFDF5 0%, #F5D07F 45%, #D49E2E 85%, #92640A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.purple-gradient-text {
+  background: linear-gradient(135deg, #FAF5FF 0%, #E2D4FD 40%, #B896F8 75%, #7E4EE0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-panel {
+  background: rgba(14, 10, 32, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--theme-border);
+  box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.45);
+}
+
+.glass-card {
+  background: radial-gradient(120% 120% at 50% 0%, rgba(30, 22, 60, 0.48) 0%, rgba(10, 7, 22, 0.8) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(245, 208, 127, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.6), 0 0 18px -4px rgba(245, 208, 127, 0.12);
+}
+
+/* 3D Oracle Card Flip */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Constellation background */
+.bg-nebula {
+  background-image: 
+    radial-gradient(circle at 18% 22%, var(--theme-glow-1) 0%, transparent 48%),
+    radial-gradient(circle at 82% 78%, var(--theme-glow-2) 0%, transparent 44%),
+    radial-gradient(circle at 50% 50%, rgba(110, 168, 217, 0.04) 0%, transparent 55%);
+}
+
+/* Marquee Animations for Reviews */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 55s linear infinite;
+}
+.animate-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-reverse 55s linear infinite;
+}
+.pause-hover:hover .animate-marquee,
+.pause-hover:hover .animate-marquee-reverse {
+  animation-play-state: paused;
+}
