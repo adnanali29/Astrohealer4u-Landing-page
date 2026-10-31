@@ -62,3 +62,4 @@ run().catch((err) => {
   console.error("Database setup failed:", err);
   process.exit(1);
 });
+

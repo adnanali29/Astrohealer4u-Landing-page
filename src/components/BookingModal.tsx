@@ -34,9 +34,10 @@ export default function BookingModal({ modalData, onClose, onShowToast }: Bookin
     playHarmonicChime(528);
     onShowToast(`Consultation slot initiated for ${name || "Seeker"}!`);
 
+    let assignedId = "AH4U-01";
     // Persist to admin panel backend
     try {
-      await fetch("/api/bookings", {
+      const res = await fetch("/api/bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -52,17 +53,35 @@ export default function BookingModal({ modalData, onClose, onShowToast }: Bookin
           source: `Modal (${modalData.mode})`,
         }),
       });
+      const data = await res.json();
+      if (data.success && data.booking?.id) {
+        assignedId = data.booking.id;
+      }
     } catch (err) {
       console.error("Failed to save booking:", err);
     }
 
+    try {
+      sessionStorage.setItem(
+        "astro_booking",
+        JSON.stringify({
+          name,
+          consultation: `${modalData.title} (${modalData.mode})`,
+          id: assignedId,
+        })
+      );
+    } catch {
+      // ignore
+    }
+
     const whatsappText = encodeURIComponent(
-      `Hello Garima Ji, I would like to book the consultation for: "${modalData.title}" (${modalData.mode}) from astrohealer4U.\n\nMy Details:\nName: ${name}\nDOB: ${dob}\nTime: ${time}\nBirth City: ${city}\nPhone: ${phone}\nQuestion/Notes: ${note || "None"}\n\nPlease confirm slot availability.`
+      `Hello Garima Ji, I have booked a consultation for: "${modalData.title}" (${modalData.mode}) on astrohealer4U.\n\nBooking Reference: ${assignedId}\nName: ${name}\nDOB: ${dob}\nTime: ${time}\nBirth City: ${city}\nPhone: ${phone}\nQuestion/Notes: ${note || "None"}\n\nPlease confirm slot availability.`
     );
 
     setTimeout(() => {
       window.open(`https://wa.me/919999999999?text=${whatsappText}`, "_blank");
-    }, 1600);
+      window.location.href = `/thank-you?booking_id=${encodeURIComponent(assignedId)}`;
+    }, 1200);
   };
 
   return (

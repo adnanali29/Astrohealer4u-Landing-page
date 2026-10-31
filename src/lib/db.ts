@@ -121,6 +121,50 @@ export async function ensureDbReady() {
   }
 }
 
+// Get next sequential booking ID: AH4U-01, AH4U-02 ... AH4U-n
+export async function getNextBookingId(): Promise<string> {
+  try {
+    await ensureDbReady();
+    const res = await getPool().query(
+      `SELECT id FROM bookings WHERE id ILIKE 'AH4U-%'`
+    );
+    let maxNum = 0;
+    for (const row of res.rows) {
+      const match = String(row.id).match(/^AH4U-(\d+)$/i);
+      if (match) {
+        const num = parseInt(match[1], 10);
+        if (num > maxNum) maxNum = num;
+      }
+    }
+    if (maxNum === 0) {
+      const countRes = await getPool().query(`SELECT COUNT(*) as count FROM bookings`);
+      maxNum = parseInt(countRes.rows[0].count, 10) || 0;
+    }
+    const nextNum = maxNum + 1;
+    const padded = nextNum < 10 ? `0${nextNum}` : `${nextNum}`;
+    return `AH4U-${padded}`;
+  } catch (err) {
+    console.error("Failed to query next booking ID from DB:", err);
+    try {
+      const data = await fs.readFile(JSON_BOOKINGS, "utf-8");
+      const list: Booking[] = JSON.parse(data);
+      let maxNum = 0;
+      for (const item of list) {
+        const match = String(item.id).match(/^AH4U-(\d+)$/i);
+        if (match) {
+          const num = parseInt(match[1], 10);
+          if (num > maxNum) maxNum = num;
+        }
+      }
+      const nextNum = (maxNum || list.length) + 1;
+      const padded = nextNum < 10 ? `0${nextNum}` : `${nextNum}`;
+      return `AH4U-${padded}`;
+    } catch {
+      return "AH4U-01";
+    }
+  }
+}
+
 // Get all bookings (Postgres primary, JSON fallback)
 export async function getBookingsFromDb(): Promise<Booking[]> {
   try {

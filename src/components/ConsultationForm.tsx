@@ -12,6 +12,7 @@ import {
   Mail,
   ArrowRight,
   Compass,
+  MessageSquare,
 } from "lucide-react";
 import { playHarmonicChime } from "@/lib/audio";
 import { consultationsCatalog } from "@/lib/data";
@@ -23,9 +24,13 @@ interface ConsultationFormProps {
 export default function ConsultationForm({ onShowToast }: ConsultationFormProps) {
   const router = useRouter();
 
+  // Dropdown 1: Service / Category
+  const [selectedServiceId, setSelectedServiceId] = useState<string>("c1"); // Career & Business
+  // Dropdown 2: Mode & Fee
+  const [selectedModeText, setSelectedModeText] = useState<string>("Detailed Chat — ₹2,100");
+
   const [formData, setFormData] = useState({
     name: "",
-    consultation: "Complete Analysis of Chart (₹5,100) — Most Popular",
     dob: "",
     tob: "",
     pob: "",
@@ -36,6 +41,32 @@ export default function ConsultationForm({ onShowToast }: ConsultationFormProps)
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Helper to get tiers for current category
+  const getServiceTiers = (serviceId: string) => {
+    if (serviceId === "c2") {
+      // Complete Analysis of Chart
+      return [
+        { mode: "Comprehensive Chat", price: 3100 },
+        { mode: "Priority Voice Call (45 min)", price: 5100 },
+        { mode: "1-on-1 Video Session (60 min)", price: 7100 },
+      ];
+    }
+    // All other consultation categories: Detailed Chat (₹2,100) & Voice Call (₹3,100)
+    return [
+      { mode: "Detailed Chat", price: 2100 },
+      { mode: "Voice Call (30 min)", price: 3100 },
+    ];
+  };
+
+  const handleServiceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newServiceId = e.target.value;
+    setSelectedServiceId(newServiceId);
+    const tiers = getServiceTiers(newServiceId);
+    if (tiers && tiers.length > 0) {
+      setSelectedModeText(`${tiers[0].mode} — ₹${tiers[0].price.toLocaleString("en-IN")}`);
+    }
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -51,34 +82,50 @@ export default function ConsultationForm({ onShowToast }: ConsultationFormProps)
     setIsSubmitting(true);
     playHarmonicChime(528);
 
+    const serviceObj = consultationsCatalog.find((c) => c.id === selectedServiceId);
+    const serviceTitle = serviceObj ? serviceObj.title : "Career & Business Consultation";
+    const fullConsultationName = `${serviceTitle} (${selectedModeText})`;
+
     if (onShowToast) {
       onShowToast(`Booking submitted for ${formData.name}!`);
     }
 
-    try {
-      sessionStorage.setItem("astro_booking", JSON.stringify(formData));
-    } catch {
-      // ignore
-    }
+    let assignedId = "AH4U-01";
 
-    // Persist to server /admin backend
+    // Persist to server / Neon DB
     try {
-      await fetch("/api/bookings", {
+      const res = await fetch("/api/bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
+          consultation: fullConsultationName,
           source: "Hero Form (Book 1-on-1 Guidance)",
         }),
       });
+      const data = await res.json();
+      if (data.success && data.booking?.id) {
+        assignedId = data.booking.id;
+      }
     } catch (err) {
       console.error("Failed to store booking:", err);
     }
 
+    try {
+      sessionStorage.setItem(
+        "astro_booking",
+        JSON.stringify({ ...formData, consultation: fullConsultationName, id: assignedId })
+      );
+    } catch {
+      // ignore
+    }
+
     setTimeout(() => {
-      router.push("/thank-you");
-    }, 400);
+      router.push(`/thank-you?booking_id=${encodeURIComponent(assignedId)}`);
+    }, 350);
   };
+
+  const currentTiers = getServiceTiers(selectedServiceId);
 
   return (
     <div
@@ -104,7 +151,7 @@ export default function ConsultationForm({ onShowToast }: ConsultationFormProps)
 
       {/* Form */}
       <form onSubmit={handleSubmit} className="space-y-2.5 text-[11px]">
-        {/* Name (Mandatory) */}
+        {/* Full Name (Mandatory) */}
         <div>
           <label className="block text-slate-800 mb-0.5 font-semibold flex items-center justify-between">
             <span className="flex items-center gap-1">
@@ -124,7 +171,7 @@ export default function ConsultationForm({ onShowToast }: ConsultationFormProps)
           />
         </div>
 
-        {/* Consultation Service Dropdown (Mandatory) */}
+        {/* Dropdown 1: Select Consultation Category / Service (Mandatory) */}
         <div>
           <label className="block text-slate-800 mb-0.5 font-semibold flex items-center justify-between">
             <span className="flex items-center gap-1">
@@ -134,28 +181,47 @@ export default function ConsultationForm({ onShowToast }: ConsultationFormProps)
             <span className="text-amber-600 font-bold text-xs">*</span>
           </label>
           <select
-            name="consultation"
+            name="selectedServiceId"
             required
-            value={formData.consultation}
-            onChange={handleChange}
+            value={selectedServiceId}
+            onChange={handleServiceChange}
             className="w-full bg-slate-50 border border-slate-300 focus:border-amber-500 focus:bg-white focus:ring-1 focus:ring-amber-500/20 rounded-lg px-3 py-1.5 text-slate-900 text-[11px] font-medium focus:outline-none transition cursor-pointer"
           >
             {consultationsCatalog.map((c) => {
-              const startingPrice = c.tiers[0]?.price ?? 2100;
               const isComplete = c.id === "c2";
               return (
-                <option
-                  key={c.id}
-                  value={`${c.title} (₹${startingPrice.toLocaleString("en-IN")})`}
-                >
-                  {c.title} — ₹{startingPrice.toLocaleString("en-IN")}{" "}
-                  {isComplete ? "★ (Popular)" : ""}
+                <option key={c.id} value={c.id}>
+                  {c.title} {isComplete ? "★ (Popular)" : ""}
                 </option>
               );
             })}
-            <option value="General Natal Consultation (Custom)">
-              General Natal Consultation & Custom Life Analysis
-            </option>
+          </select>
+        </div>
+
+        {/* Dropdown 2: Select Consultation Mode & Fee (Mandatory) */}
+        <div>
+          <label className="block text-slate-800 mb-0.5 font-semibold flex items-center justify-between">
+            <span className="flex items-center gap-1">
+              <MessageSquare className="w-3 h-3 text-amber-600" />
+              <span>Consultation Mode &amp; Fee</span>
+            </span>
+            <span className="text-amber-600 font-bold text-xs">*</span>
+          </label>
+          <select
+            name="selectedModeText"
+            required
+            value={selectedModeText}
+            onChange={(e) => setSelectedModeText(e.target.value)}
+            className="w-full bg-amber-50/70 border border-amber-300 focus:border-amber-500 focus:bg-white focus:ring-1 focus:ring-amber-500/20 rounded-lg px-3 py-1.5 text-slate-900 text-[11px] font-bold focus:outline-none transition cursor-pointer"
+          >
+            {currentTiers.map((t, idx) => (
+              <option
+                key={idx}
+                value={`${t.mode} — ₹${t.price.toLocaleString("en-IN")}`}
+              >
+                {t.mode} — ₹{t.price.toLocaleString("en-IN")}
+              </option>
+            ))}
           </select>
         </div>
 

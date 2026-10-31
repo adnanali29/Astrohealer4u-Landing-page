@@ -185,8 +185,8 @@ export const consultationsCatalog: ConsultationItem[] = [
     category: "healing",
     description: "Resolve family disputes, heaviness, and commercial stagnation with zero-demolition spatial energy calibration.",
     tiers: [
-      { mode: "Online Floorplan Audit", price: 3100 },
-      { mode: "Deep Video Vastu Walkthrough", price: 5100 }
+      { mode: "Detailed Chat", price: 2100 },
+      { mode: "Voice Call (30 min)", price: 3100 }
     ]
   },
   {
@@ -198,8 +198,8 @@ export const consultationsCatalog: ConsultationItem[] = [
     category: "healing",
     description: "Empirical assessment of which stones and Mukhi beads harmonize with your Lagnesh and Yogakaraka without triggering negative side-effects.",
     tiers: [
-      { mode: "Prescription Report", price: 1500 },
-      { mode: "Call + Custom Sourcing Advice", price: 2500 }
+      { mode: "Detailed Chat", price: 2100 },
+      { mode: "Voice Call (30 min)", price: 3100 }
     ]
   },
   {
@@ -224,8 +224,8 @@ export const consultationsCatalog: ConsultationItem[] = [
     category: "core",
     description: "Your comprehensive 12-month annual solar return forecast detailing month-by-month financial highs, cautions, and auspicious events.",
     tiers: [
-      { mode: "Detailed Annual Report", price: 3500 },
-      { mode: "Report + 45 min Strategy Call", price: 5500 }
+      { mode: "Detailed Chat", price: 2100 },
+      { mode: "Voice Call (30 min)", price: 3100 }
     ]
   }
 ];

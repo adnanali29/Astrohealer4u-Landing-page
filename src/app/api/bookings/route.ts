@@ -4,6 +4,7 @@ import {
   insertBookingToDb,
   updateBookingStatusInDb,
   deleteBookingFromDb,
+  getNextBookingId,
   type Booking,
 } from "@/lib/db";
 
@@ -32,9 +33,13 @@ export async function POST(request: Request) {
       );
     }
 
-    const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+    // Generate sequential ID: AH4U-01, AH4U-02 ... AH4U-n
+    const bookingId = body.id && String(body.id).startsWith("AH4U-")
+      ? body.id
+      : await getNextBookingId();
+
     const newBooking: Booking = {
-      id: body.id || `AH-${randomSuffix}`,
+      id: bookingId,
       name: String(body.name).trim(),
       consultation: body.consultation || "General Natal Consultation",
       dob: body.dob || "",
