@@ -134,7 +134,7 @@ export default function ConsultationForm({ onShowToast }: ConsultationFormProps)
           Book 1-on-1 Guidance
         </h3>
         <p className="text-[11px] text-slate-500 mt-0.5">
-          Direct personal analysis with Master Astrologer <strong>Garima Verma</strong>.
+          Direct personal analysis with Master Astrologer <strong>Garima Verma</strong> (10+ Years Experience • 15,000+ Consultations Helped).
         </p>
       </div>
 

@@ -21,7 +21,7 @@ export default function Header({ onShowToast }: HeaderProps) {
       >
         <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
         <span className="text-amber-200 font-medium">
-          ✦ Garima Verma is accepting 1-on-1 Natal Blueprint Consultations for this month
+          ✦ Garima Verma (10+ Years Experience • 15,000+ Seekers Helped) is accepting 1-on-1 Consultations
         </span>
         <a
           href="#hero-consultation-form"

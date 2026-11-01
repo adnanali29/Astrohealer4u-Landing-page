@@ -32,18 +32,36 @@ export default function AboutGarima() {
         <div className="lg:col-span-7 space-y-5">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-900/30 border border-purple-500/30 text-celestial-amethyst text-xs uppercase tracking-widest">
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span>The AstroHealer Philosophy</span>
+            <span>The AstroHealer Philosophy • 10+ Years Experience</span>
           </div>
 
           <h3 className="font-cinzel text-2xl sm:text-4xl font-extrabold text-white leading-tight">
-            A Sanctuary Free from Fear, Guilt, & Expensive Superstitions
+            A Sanctuary Free from Fear, Guilt, &amp; Expensive Superstitions
           </h3>
 
           <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-            Most people leave traditional astrologers feeling terrified of Saturn’s Sade Sati or
-            Manglik doshas. At <strong>astrohealer4U</strong>, we dismantle that terror. Astrology
-            is mathematical cosmic resonance, psychological insight, and energy mechanics.
+            With <strong>over 10+ years of dedicated practice</strong> in classical Vedic astrology and cosmic energy healing, Master Astrologer <strong>Garima Verma</strong> has helped more than <strong>15,000+ seekers, professionals, and families</strong> navigate critical turning points in their lives.
           </p>
+
+          <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+            Most people leave traditional astrologers feeling terrified of Saturn’s Sade Sati, Rahu Mahadasha, or Manglik doshas. At <strong>astrohealer4U</strong>, we dismantle that terror. Astrology is mathematical cosmic resonance, psychological insight, and energy mechanics—never a tool for manipulation or fear.
+          </p>
+
+          {/* Quick Stats Grid */}
+          <div className="grid grid-cols-3 gap-2.5 py-1">
+            <div className="p-3 rounded-2xl glass-card border border-celestial-gold/20 text-center">
+              <div className="font-cinzel text-lg sm:text-xl font-bold text-amber-300">10+ Years</div>
+              <p className="text-[10px] text-slate-400 uppercase tracking-wider mt-0.5">Vedic Experience</p>
+            </div>
+            <div className="p-3 rounded-2xl glass-card border border-purple-500/20 text-center">
+              <div className="font-cinzel text-lg sm:text-xl font-bold text-purple-300">15,000+</div>
+              <p className="text-[10px] text-slate-400 uppercase tracking-wider mt-0.5">Seekers Helped</p>
+            </div>
+            <div className="p-3 rounded-2xl glass-card border border-emerald-500/20 text-center">
+              <div className="font-cinzel text-lg sm:text-xl font-bold text-emerald-300">35+</div>
+              <p className="text-[10px] text-slate-400 uppercase tracking-wider mt-0.5">Global Countries</p>
+            </div>
+          </div>
 
           <div className="space-y-3.5 pt-1">
             <div className="flex items-start gap-3.5">
@@ -51,9 +69,9 @@ export default function AboutGarima() {
                 <Check className="w-3.5 h-3.5" />
               </div>
               <div>
-                <h4 className="text-white font-semibold text-sm">Empirical Parashara & KP Systems</h4>
+                <h4 className="text-white font-semibold text-sm">Empirical Parashara &amp; KP Systems</h4>
                 <p className="text-slate-400 text-xs mt-0.5">
-                  Deep multi-layered dasha transit calculations without vague guesses.
+                  10+ years perfecting multi-layered dasha transit calculations and birth-time rectifications without vague guesses.
                 </p>
               </div>
             </div>
@@ -65,8 +83,7 @@ export default function AboutGarima() {
               <div>
                 <h4 className="text-white font-semibold text-sm">Pragmatic, Cost-Effective Remedies</h4>
                 <p className="text-slate-400 text-xs mt-0.5">
-                  Mantra resonance, behavioral adjustments, color alignments, and certified natural
-                  crystals.
+                  Sound mantra resonance, behavioral adjustments, planetary gemstones, and verified crystal alignments—zero superstitious rituals.
                 </p>
               </div>
             </div>
@@ -76,10 +93,9 @@ export default function AboutGarima() {
                 <Check className="w-3.5 h-3.5" />
               </div>
               <div>
-                <h4 className="text-white font-semibold text-sm">Complete Confidentiality Guaranteed</h4>
+                <h4 className="text-white font-semibold text-sm">Compassionate &amp; 100% Confidential Support</h4>
                 <p className="text-slate-400 text-xs mt-0.5">
-                  Your deepest vulnerabilities, career secrets, and marital challenges remain 100%
-                  private.
+                  Every reading is held in strict privacy, helping you find genuine peace, confidence, and direction.
                 </p>
               </div>
             </div>

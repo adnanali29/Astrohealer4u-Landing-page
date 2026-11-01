@@ -39,10 +39,11 @@ export default function Hero({ onShowToast }: HeroProps) {
             </h1>
 
             <p className="max-w-2xl mx-auto lg:mx-0 text-sm sm:text-lg text-slate-300 font-light leading-relaxed mb-7">
-              No scare tactics. No endless superstitions. We decode your{" "}
+              With <span className="text-amber-300 font-semibold">10+ years of deep Vedic mastery</span> and over{" "}
+              <span className="text-amber-300 font-semibold">15,000+ seekers helped worldwide</span>, Master Astrologer Garima Verma decodes your{" "}
               <span className="text-amber-300 font-medium">8th house secrets</span>, karmic debts, and
               hidden celestial roadblocks to guide your career, marriage, and soul path into effortless
-              alignment.
+              alignment. Zero fear tactics. Pure logical clarity.
             </p>
 
             {/* CTA Buttons */}
@@ -67,10 +68,18 @@ export default function Hero({ onShowToast }: HeroProps) {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto lg:mx-0">
               <div className="p-3.5 rounded-2xl glass-card text-center">
                 <div className="font-cinzel text-xl sm:text-2xl font-bold gold-gradient-text">
-                  12,500+
+                  10+ Years
                 </div>
                 <p className="text-[10px] text-slate-400 uppercase tracking-wider mt-1">
-                  Charts Calibrated
+                  Vedic Experience
+                </p>
+              </div>
+              <div className="p-3.5 rounded-2xl glass-card text-center">
+                <div className="font-cinzel text-xl sm:text-2xl font-bold purple-gradient-text">
+                  15,000+
+                </div>
+                <p className="text-[10px] text-slate-400 uppercase tracking-wider mt-1">
+                  Seekers Helped
                 </p>
               </div>
               <div className="p-3.5 rounded-2xl glass-card text-center">
@@ -82,19 +91,11 @@ export default function Hero({ onShowToast }: HeroProps) {
                 </p>
               </div>
               <div className="p-3.5 rounded-2xl glass-card text-center">
-                <div className="font-cinzel text-xl sm:text-2xl font-bold purple-gradient-text">
-                  100%
-                </div>
-                <p className="text-[10px] text-slate-400 uppercase tracking-wider mt-1">
-                  Zero-Fear Ethics
-                </p>
-              </div>
-              <div className="p-3.5 rounded-2xl glass-card text-center">
                 <div className="font-cinzel text-xl sm:text-2xl font-bold text-emerald-400">
                   35+
                 </div>
                 <p className="text-[10px] text-slate-400 uppercase tracking-wider mt-1">
-                  Countries
+                  Countries Worldwide
                 </p>
               </div>
             </div>

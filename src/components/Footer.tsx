@@ -16,7 +16,7 @@ export default function Footer() {
             </span>
           </div>
           <p className="text-slate-400 leading-relaxed text-[11px]">
-            Guided by Master Vedic Astrologer & Tarot Reader <strong>Garima Verma</strong>. Decoding
+            Guided by Master Vedic Astrologer &amp; Tarot Reader <strong>Garima Verma</strong> (10+ Years Experience • 15,000+ Seekers Helped). Decoding
             soul contracts, karma, and cosmic timing across 35+ countries.
           </p>
           <div className="pt-2">
