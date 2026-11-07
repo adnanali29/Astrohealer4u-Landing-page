@@ -43,6 +43,10 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Dynamic Soft Cosmic Theme Variables */
 :root {
   --bg-cosmic-950: #05030d;

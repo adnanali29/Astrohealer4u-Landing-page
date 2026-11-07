@@ -19,9 +19,6 @@ interface BookingModalProps {
 
 export default function BookingModal({ modalData, onClose, onShowToast }: BookingModalProps) {
   const [name, setName] = useState("");
-  const [dob, setDob] = useState("");
-  const [time, setTime] = useState("");
-  const [city, setCity] = useState("");
   const [phone, setPhone] = useState("");
   const [note, setNote] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -43,12 +40,7 @@ export default function BookingModal({ modalData, onClose, onShowToast }: Bookin
         body: JSON.stringify({
           name,
           consultation: `${modalData.title} (${modalData.mode}) — ₹${modalData.price}`,
-          dob,
-          tob: time,
-          pob: city,
           phone,
-          appointmentDate: "To be confirmed via WhatsApp",
-          appointmentTime: "Flexible",
           notes: note,
           source: `Modal (${modalData.mode})`,
         }),
@@ -75,7 +67,7 @@ export default function BookingModal({ modalData, onClose, onShowToast }: Bookin
     }
 
     const whatsappText = encodeURIComponent(
-      `Hello Garima Ji, I have booked a consultation for: "${modalData.title}" (${modalData.mode}) on astrohealer4U.\n\nBooking Reference: ${assignedId}\nName: ${name}\nDOB: ${dob}\nTime: ${time}\nBirth City: ${city}\nPhone: ${phone}\nQuestion/Notes: ${note || "None"}\n\nPlease confirm slot availability.`
+      `Hello Garima Ji, I have booked a consultation for: "${modalData.title}" (${modalData.mode}) on astrohealer4U.\n\nBooking Reference: ${assignedId}\nName: ${name}\nPhone: ${phone}\nQuestion/Notes: ${note || "None"}\n\nPlease confirm slot availability.`
     );
 
     setTimeout(() => {
@@ -117,41 +109,6 @@ export default function BookingModal({ modalData, onClose, onShowToast }: Bookin
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Enter your name"
-                className="w-full bg-cosmic-950/90 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-celestial-gold"
-              />
-            </div>
-
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <label className="block text-slate-300 mb-1 font-medium">Date of Birth</label>
-                <input
-                  type="date"
-                  required
-                  value={dob}
-                  onChange={(e) => setDob(e.target.value)}
-                  className="w-full bg-cosmic-950/90 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-celestial-gold"
-                />
-              </div>
-              <div>
-                <label className="block text-slate-300 mb-1 font-medium">Birth Time</label>
-                <input
-                  type="time"
-                  required
-                  value={time}
-                  onChange={(e) => setTime(e.target.value)}
-                  className="w-full bg-cosmic-950/90 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-celestial-gold"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-slate-300 mb-1 font-medium">Birth City / Country</label>
-              <input
-                type="text"
-                required
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-                placeholder="e.g. Pune, Maharashtra"
                 className="w-full bg-cosmic-950/90 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-celestial-gold"
               />
             </div>

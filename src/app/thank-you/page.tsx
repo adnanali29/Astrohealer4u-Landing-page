@@ -102,7 +102,7 @@ function ThankYouContent() {
       </div>
 
       <p className="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-lg mx-auto mb-6">
-        Your birth coordinates and preferred appointment timing have been securely received.{" "}
+        Your consultation request and contact details have been securely received.{" "}
         <span className="text-amber-200 font-semibold">
           Our team will get back to you in sometime
         </span>{" "}

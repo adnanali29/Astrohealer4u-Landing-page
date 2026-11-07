@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Sparkles, ArrowRight } from "lucide-react";
 import { playHarmonicChime } from "@/lib/audio";
@@ -8,24 +8,42 @@ import { consultationsCatalog } from "@/lib/data";
 
 interface ConsultationFormProps {
   onShowToast?: (msg: string) => void;
+  externalSelection?: {
+    serviceId?: string;
+    modeText?: string;
+  };
 }
 
-export default function ConsultationForm({ onShowToast }: ConsultationFormProps) {
+export default function ConsultationForm({ onShowToast, externalSelection }: ConsultationFormProps) {
   const router = useRouter();
 
   // Dropdown 1: Service / Category
   const [selectedServiceId, setSelectedServiceId] = useState<string>("c1"); // Career & Business
   // Dropdown 2: Mode & Fee
-  const [selectedModeText, setSelectedModeText] = useState<string>("Detailed Chat — ₹2,100");
+  const [selectedModeText, setSelectedModeText] = useState<string>("Any One Question — ₹499");
+
+  useEffect(() => {
+    if (externalSelection?.serviceId) {
+      setSelectedServiceId(externalSelection.serviceId);
+      const tiers = getServiceTiers(externalSelection.serviceId);
+      if (externalSelection.modeText) {
+        const match = tiers.find(
+          (t) =>
+            externalSelection.modeText?.includes(t.mode) ||
+            externalSelection.modeText?.includes(String(t.price))
+        );
+        if (match) {
+          setSelectedModeText(`${match.mode} — ₹${match.price.toLocaleString("en-IN")}`);
+        } else {
+          setSelectedModeText(externalSelection.modeText);
+        }
+      }
+    }
+  }, [externalSelection]);
 
   const [formData, setFormData] = useState({
     name: "",
-    dob: "",
-    tob: "",
-    pob: "",
     phone: "",
-    appointmentDate: "",
-    appointmentTime: "",
     email: "",
   });
 
@@ -41,8 +59,9 @@ export default function ConsultationForm({ onShowToast }: ConsultationFormProps)
         { mode: "1-on-1 Video Session (60 min)", price: 7100 },
       ];
     }
-    // All other consultation categories: Detailed Chat (₹2,100) & Voice Call (₹3,100)
+    // All other consultation categories: Any One Question (₹499), Detailed Chat (₹2,100), Voice Call (₹3,100)
     return [
+      { mode: "Any One Question", price: 499 },
       { mode: "Detailed Chat", price: 2100 },
       { mode: "Voice Call (30 min)", price: 3100 },
     ];
@@ -205,102 +224,21 @@ export default function ConsultationForm({ onShowToast }: ConsultationFormProps)
           </select>
         </div>
 
-        {/* Date of Birth & Time of Birth (Mandatory) */}
-        <div className="grid grid-cols-2 gap-2">
-          <div>
-            <label className="block text-slate-800 mb-0.5 font-semibold flex items-center justify-between">
-              <span>Date of Birth</span>
-              <span className="text-amber-600 font-bold text-xs">*</span>
-            </label>
-            <input
-              type="date"
-              name="dob"
-              required
-              value={formData.dob}
-              onChange={handleChange}
-              className="w-full bg-slate-50 border border-slate-300 focus:border-amber-500 focus:bg-white focus:ring-1 focus:ring-amber-500/20 rounded-lg px-2.5 py-1.5 text-slate-900 text-xs focus:outline-none transition [color-scheme:light]"
-            />
-          </div>
-          <div>
-            <label className="block text-slate-800 mb-0.5 font-semibold flex items-center justify-between">
-              <span>Time of Birth</span>
-              <span className="text-amber-600 font-bold text-xs">*</span>
-            </label>
-            <input
-              type="time"
-              name="tob"
-              required
-              value={formData.tob}
-              onChange={handleChange}
-              className="w-full bg-slate-50 border border-slate-300 focus:border-amber-500 focus:bg-white focus:ring-1 focus:ring-amber-500/20 rounded-lg px-2.5 py-1.5 text-slate-900 text-xs focus:outline-none transition [color-scheme:light]"
-            />
-          </div>
-        </div>
-
-        {/* Place of Birth & Contact Number (Mandatory) */}
-        <div className="grid grid-cols-2 gap-2">
-          <div>
-            <label className="block text-slate-800 mb-0.5 font-semibold flex items-center justify-between">
-              <span>Place of Birth</span>
-              <span className="text-amber-600 font-bold text-xs">*</span>
-            </label>
-            <input
-              type="text"
-              name="pob"
-              required
-              value={formData.pob}
-              onChange={handleChange}
-              placeholder="City, State"
-              className="w-full bg-slate-50 border border-slate-300 focus:border-amber-500 focus:bg-white focus:ring-1 focus:ring-amber-500/20 rounded-lg px-2.5 py-1.5 text-slate-900 placeholder-slate-400 text-xs focus:outline-none transition"
-            />
-          </div>
-          <div>
-            <label className="block text-slate-800 mb-0.5 font-semibold flex items-center justify-between">
-              <span>Phone / WhatsApp</span>
-              <span className="text-amber-600 font-bold text-xs">*</span>
-            </label>
-            <input
-              type="tel"
-              name="phone"
-              required
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder="+91 98765 43210"
-              className="w-full bg-slate-50 border border-slate-300 focus:border-amber-500 focus:bg-white focus:ring-1 focus:ring-amber-500/20 rounded-lg px-2.5 py-1.5 text-slate-900 placeholder-slate-400 text-xs focus:outline-none transition"
-            />
-          </div>
-        </div>
-
-        {/* Appointment Date and Time (Mandatory) */}
-        <div className="grid grid-cols-2 gap-2">
-          <div>
-            <label className="block text-slate-800 mb-0.5 font-semibold flex items-center justify-between">
-              <span>Appointment Date</span>
-              <span className="text-amber-600 font-bold text-xs">*</span>
-            </label>
-            <input
-              type="date"
-              name="appointmentDate"
-              required
-              value={formData.appointmentDate}
-              onChange={handleChange}
-              className="w-full bg-slate-50 border border-slate-300 focus:border-amber-500 focus:bg-white focus:ring-1 focus:ring-amber-500/20 rounded-lg px-2.5 py-1.5 text-slate-900 text-xs focus:outline-none transition [color-scheme:light]"
-            />
-          </div>
-          <div>
-            <label className="block text-slate-800 mb-0.5 font-semibold flex items-center justify-between">
-              <span>Appointment Time</span>
-              <span className="text-amber-600 font-bold text-xs">*</span>
-            </label>
-            <input
-              type="time"
-              name="appointmentTime"
-              required
-              value={formData.appointmentTime}
-              onChange={handleChange}
-              className="w-full bg-slate-50 border border-slate-300 focus:border-amber-500 focus:bg-white focus:ring-1 focus:ring-amber-500/20 rounded-lg px-2.5 py-1.5 text-slate-900 text-xs focus:outline-none transition [color-scheme:light]"
-            />
-          </div>
+        {/* Phone / WhatsApp Contact (Mandatory) */}
+        <div>
+          <label className="block text-slate-800 mb-0.5 font-semibold flex items-center justify-between">
+            <span>Phone / WhatsApp</span>
+            <span className="text-amber-600 font-bold text-xs">*</span>
+          </label>
+          <input
+            type="tel"
+            name="phone"
+            required
+            value={formData.phone}
+            onChange={handleChange}
+            placeholder="+91 98765 43210"
+            className="w-full bg-slate-50 border border-slate-300 focus:border-amber-500 focus:bg-white focus:ring-1 focus:ring-amber-500/20 rounded-lg px-3 py-1.5 text-slate-900 placeholder-slate-400 text-xs focus:outline-none transition"
+          />
         </div>
 
         {/* Email Address (Optional) */}

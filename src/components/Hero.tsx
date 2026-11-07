@@ -5,9 +5,13 @@ import ConsultationForm from "@/components/ConsultationForm";
 
 interface HeroProps {
   onShowToast?: (msg: string) => void;
+  externalSelection?: {
+    serviceId?: string;
+    modeText?: string;
+  };
 }
 
-export default function Hero({ onShowToast }: HeroProps) {
+export default function Hero({ onShowToast, externalSelection }: HeroProps) {
   return (
     <section className="relative flex items-center justify-center pt-4 sm:pt-6 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8 bg-nebula overflow-hidden">
       {/* Astrological Geometric Rings Visual Overlay */}
@@ -21,7 +25,7 @@ export default function Hero({ onShowToast }: HeroProps) {
         <div className="flex flex-col lg:grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
           {/* Right side on desktop (Col 8-12) / Top on phone (order-1 lg:order-2) */}
           <div className="w-full lg:col-span-5 order-1 lg:order-2">
-            <ConsultationForm onShowToast={onShowToast} />
+            <ConsultationForm onShowToast={onShowToast} externalSelection={externalSelection} />
           </div>
 
           {/* Left side on desktop (Col 1-7) / Bottom on phone (order-2 lg:order-1) */}

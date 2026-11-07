@@ -6,9 +6,9 @@ export default function AboutGarima() {
     <section id="about" className="py-10 sm:py-14 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         {/* Visual Column - Real Portrait of Garima Verma */}
-        <div className="lg:col-span-5 relative flex justify-center">
-          <div className="relative w-72 sm:w-80 h-96 sm:h-[440px] rounded-3xl p-1 bg-gradient-to-b from-celestial-gold via-purple-600/60 to-transparent shadow-[0_0_40px_rgba(246,207,122,0.2)]">
-            <div className="w-full h-full rounded-[22px] bg-cosmic-900 overflow-hidden relative group">
+        <div className="lg:col-span-5 relative flex justify-center" style={{ position: "relative" }}>
+          <div className="relative w-72 sm:w-80 h-96 sm:h-[440px] rounded-3xl p-1 bg-gradient-to-b from-celestial-gold via-purple-600/60 to-transparent shadow-[0_0_40px_rgba(246,207,122,0.2)]" style={{ position: "relative" }}>
+            <div className="w-full h-full rounded-[22px] bg-cosmic-900 overflow-hidden relative group" style={{ position: "relative" }}>
               {/* Image 4 Photo */}
               <Image
                 src="/garima-verma.jpg"

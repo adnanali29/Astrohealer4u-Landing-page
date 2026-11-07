@@ -19,10 +19,11 @@ import {
 import { consultationsCatalog, ConsultationItem } from "@/lib/data";
 
 interface AllConsultationsProps {
-  onOpenBooking: (title: string, mode: string, price: number) => void;
+  onOpenBooking?: (title: string, mode: string, price: number) => void;
+  onSelectConsultation?: (serviceId: string, modeText: string) => void;
 }
 
-export default function AllConsultations({ onOpenBooking }: AllConsultationsProps) {
+export default function AllConsultations({ onOpenBooking, onSelectConsultation }: AllConsultationsProps) {
   const [selectedCategory, setSelectedCategory] = useState<
     "all" | "core" | "relationships" | "career" | "healing"
   >("all");
@@ -79,7 +80,12 @@ export default function AllConsultations({ onOpenBooking }: AllConsultationsProp
   const handleBook = (item: ConsultationItem) => {
     const tierIndex = selectedTiers[item.id] ?? 0;
     const tier = item.tiers[tierIndex] || item.tiers[0];
-    onOpenBooking(item.title, tier.mode, tier.price);
+    const modeString = `${tier.mode} — ₹${tier.price.toLocaleString("en-IN")}`;
+    if (onSelectConsultation) {
+      onSelectConsultation(item.id, modeString);
+    } else if (onOpenBooking) {
+      onOpenBooking(item.title, tier.mode, tier.price);
+    }
   };
 
   return (
@@ -248,7 +254,8 @@ export default function AllConsultations({ onOpenBooking }: AllConsultationsProp
                       const isSelected = currentTierIndex === idx;
 
                       let shortLabel = "CHAT";
-                      if (tier.mode.includes("Chat")) shortLabel = "💬 CHAT";
+                      if (tier.mode.includes("Question")) shortLabel = "1 QUESTION";
+                      else if (tier.mode.includes("Chat")) shortLabel = "💬 CHAT";
                       else if (tier.mode.includes("Voice") || tier.mode.includes("Call"))
                         shortLabel = "📞 CALL";
                       else if (tier.mode.includes("Video")) shortLabel = "📹 VIDEO";
@@ -282,9 +289,9 @@ export default function AllConsultations({ onOpenBooking }: AllConsultationsProp
                   </div>
                 </div>
 
-                {/* Full-width Book Consultation Button */}
-                <button
-                  type="button"
+                {/* Full-width Book Consultation Button - Redirects directly to hero form */}
+                <a
+                  href="#hero-consultation-form"
                   onClick={() => handleBook(item)}
                   className={`w-full py-3.5 rounded-xl font-extrabold text-xs uppercase tracking-wider transition flex items-center justify-center gap-1.5 cursor-pointer ${
                     item.isPopular
@@ -294,7 +301,7 @@ export default function AllConsultations({ onOpenBooking }: AllConsultationsProp
                 >
                   <span>Book Consultation</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                </a>
               </div>
             );
           })}

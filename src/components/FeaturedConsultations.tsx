@@ -4,13 +4,14 @@ import { useState } from "react";
 import { Briefcase, Sparkles, Heart, Check, ArrowRight } from "lucide-react";
 
 interface FeaturedConsultationsProps {
-  onOpenBooking: (title: string, mode: string, price: number) => void;
+  onOpenBooking?: (title: string, mode: string, price: number) => void;
+  onSelectConsultation?: (serviceId: string, modeText: string) => void;
 }
 
-export default function FeaturedConsultations({ onOpenBooking }: FeaturedConsultationsProps) {
+export default function FeaturedConsultations({ onOpenBooking, onSelectConsultation }: FeaturedConsultationsProps) {
   const [careerMode, setCareerMode] = useState<{ mode: string; price: number }>({
-    mode: "Detailed Chat Session",
-    price: 2100,
+    mode: "Any One Question",
+    price: 499,
   });
 
   const [completeMode, setCompleteMode] = useState<{ mode: string; price: number }>({
@@ -19,9 +20,36 @@ export default function FeaturedConsultations({ onOpenBooking }: FeaturedConsult
   });
 
   const [marriageMode, setMarriageMode] = useState<{ mode: string; price: number }>({
-    mode: "Detailed Chat Session",
-    price: 2100,
+    mode: "Any One Question",
+    price: 499,
   });
+
+  const handleCareerBook = () => {
+    const modeString = `${careerMode.mode} — ₹${careerMode.price.toLocaleString("en-IN")}`;
+    if (onSelectConsultation) {
+      onSelectConsultation("c1", modeString);
+    } else if (onOpenBooking) {
+      onOpenBooking("Career & Business Blueprint", careerMode.mode, careerMode.price);
+    }
+  };
+
+  const handleCompleteBook = () => {
+    const modeString = `${completeMode.mode} — ₹${completeMode.price.toLocaleString("en-IN")}`;
+    if (onSelectConsultation) {
+      onSelectConsultation("c2", modeString);
+    } else if (onOpenBooking) {
+      onOpenBooking("Complete Chart Analysis", completeMode.mode, completeMode.price);
+    }
+  };
+
+  const handleMarriageBook = () => {
+    const modeString = `${marriageMode.mode} — ₹${marriageMode.price.toLocaleString("en-IN")}`;
+    if (onSelectConsultation) {
+      onSelectConsultation("c3", modeString);
+    } else if (onOpenBooking) {
+      onOpenBooking("Marriage & Relationship Milan", marriageMode.mode, marriageMode.price);
+    }
+  };
 
   return (
     <section id="consultations" className="py-10 sm:py-14 px-4 sm:px-6 lg:px-8 relative">
@@ -62,20 +90,41 @@ export default function FeaturedConsultations({ onOpenBooking }: FeaturedConsult
                 relocation / PR prospects.
               </p>
 
-              {/* Horizontal Tier Selectors */}
-              <div className="grid grid-cols-2 gap-2 mb-6">
+              {/* Horizontal Tier Selectors (3 Tiers) */}
+              <div className="grid grid-cols-3 gap-1.5 mb-6">
                 <button
                   type="button"
                   onClick={() =>
-                    setCareerMode({ mode: "Detailed Chat Session", price: 2100 })
+                    setCareerMode({ mode: "Any One Question", price: 499 })
                   }
-                  className={`p-2.5 rounded-xl border text-center transition flex flex-col items-center justify-center cursor-pointer ${
+                  className={`p-2 rounded-xl border text-center transition flex flex-col items-center justify-center cursor-pointer ${
+                    careerMode.price === 499
+                      ? "border-2 border-celestial-gold bg-celestial-gold/20 shadow-[0_0_15px_rgba(246,207,122,0.25)]"
+                      : "border-white/10 bg-cosmic-950/60 hover:border-white/30"
+                  }`}
+                >
+                  <span className="text-[9px] text-slate-300 font-semibold mb-0.5 whitespace-nowrap">1 QUESTION</span>
+                  <span
+                    className={`text-xs font-extrabold ${
+                      careerMode.price === 499 ? "text-amber-300" : "text-emerald-400"
+                    }`}
+                  >
+                    ₹499
+                  </span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() =>
+                    setCareerMode({ mode: "Detailed Chat", price: 2100 })
+                  }
+                  className={`p-2 rounded-xl border text-center transition flex flex-col items-center justify-center cursor-pointer ${
                     careerMode.price === 2100
                       ? "border-2 border-celestial-gold bg-celestial-gold/20 shadow-[0_0_15px_rgba(246,207,122,0.25)]"
                       : "border-white/10 bg-cosmic-950/60 hover:border-white/30"
                   }`}
                 >
-                  <span className="text-[10px] text-slate-300 font-semibold mb-0.5">💬 CHAT</span>
+                  <span className="text-[9px] text-slate-300 font-semibold mb-0.5">💬 CHAT</span>
                   <span
                     className={`text-xs font-extrabold ${
                       careerMode.price === 2100 ? "text-amber-300" : "text-emerald-400"
@@ -88,15 +137,15 @@ export default function FeaturedConsultations({ onOpenBooking }: FeaturedConsult
                 <button
                   type="button"
                   onClick={() =>
-                    setCareerMode({ mode: "Direct Voice Call (30 min)", price: 3100 })
+                    setCareerMode({ mode: "Voice Call (30 min)", price: 3100 })
                   }
-                  className={`p-2.5 rounded-xl border text-center transition flex flex-col items-center justify-center cursor-pointer ${
+                  className={`p-2 rounded-xl border text-center transition flex flex-col items-center justify-center cursor-pointer ${
                     careerMode.price === 3100
                       ? "border-2 border-celestial-gold bg-celestial-gold/20 shadow-[0_0_15px_rgba(246,207,122,0.25)]"
                       : "border-white/10 bg-cosmic-950/60 hover:border-white/30"
                   }`}
                 >
-                  <span className="text-[10px] text-slate-300 font-semibold mb-0.5">📞 CALL</span>
+                  <span className="text-[9px] text-slate-300 font-semibold mb-0.5">📞 CALL</span>
                   <span
                     className={`text-xs font-extrabold ${
                       careerMode.price === 3100 ? "text-amber-300" : "text-emerald-400"
@@ -120,20 +169,14 @@ export default function FeaturedConsultations({ onOpenBooking }: FeaturedConsult
               </ul>
             </div>
 
-            <button
-              type="button"
-              onClick={() =>
-                onOpenBooking(
-                  "Career & Business Blueprint",
-                  careerMode.mode,
-                  careerMode.price
-                )
-              }
+            <a
+              href="#hero-consultation-form"
+              onClick={handleCareerBook}
               className="w-full py-3.5 rounded-xl bg-cosmic-900 border border-celestial-gold/40 text-celestial-gold font-bold text-xs uppercase tracking-wider hover:bg-celestial-gold hover:text-cosmic-950 transition flex items-center justify-center gap-1.5 cursor-pointer"
             >
               <span>Book Career Reading</span>
               <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+            </a>
           </div>
 
           {/* Service 2: Complete Kundli Analysis (FEATURED) */}
@@ -212,7 +255,7 @@ export default function FeaturedConsultations({ onOpenBooking }: FeaturedConsult
                   type="button"
                   onClick={() =>
                     setCompleteMode({
-                      mode: "1-on-1 Live Video (60 min)",
+                      mode: "1-on-1 Video Session (60 min)",
                       price: 7100,
                     })
                   }
@@ -246,20 +289,14 @@ export default function FeaturedConsultations({ onOpenBooking }: FeaturedConsult
               </ul>
             </div>
 
-            <button
-              type="button"
-              onClick={() =>
-                onOpenBooking(
-                  "Complete Chart Analysis",
-                  completeMode.mode,
-                  completeMode.price
-                )
-              }
+            <a
+              href="#hero-consultation-form"
+              onClick={handleCompleteBook}
               className="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-cosmic-950 font-extrabold text-xs uppercase tracking-wider shadow-lg hover:shadow-celestial-gold/50 transition flex items-center justify-center gap-1.5 cursor-pointer"
             >
               <span>Book Complete Chart Reading</span>
               <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+            </a>
           </div>
 
           {/* Service 3: Marriage & Compatibility */}
@@ -283,20 +320,41 @@ export default function FeaturedConsultations({ onOpenBooking }: FeaturedConsult
                 emotional incompatibilities.
               </p>
 
-              {/* Horizontal Tier Selectors */}
-              <div className="grid grid-cols-2 gap-2 mb-6">
+              {/* Horizontal Tier Selectors (3 Tiers) */}
+              <div className="grid grid-cols-3 gap-1.5 mb-6">
                 <button
                   type="button"
                   onClick={() =>
-                    setMarriageMode({ mode: "Detailed Chat Session", price: 2100 })
+                    setMarriageMode({ mode: "Any One Question", price: 499 })
                   }
-                  className={`p-2.5 rounded-xl border text-center transition flex flex-col items-center justify-center cursor-pointer ${
+                  className={`p-2 rounded-xl border text-center transition flex flex-col items-center justify-center cursor-pointer ${
+                    marriageMode.price === 499
+                      ? "border-2 border-celestial-gold bg-celestial-gold/20 shadow-[0_0_15px_rgba(246,207,122,0.25)]"
+                      : "border-white/10 bg-cosmic-950/60 hover:border-white/30"
+                  }`}
+                >
+                  <span className="text-[9px] text-slate-300 font-semibold mb-0.5 whitespace-nowrap">1 QUESTION</span>
+                  <span
+                    className={`text-xs font-extrabold ${
+                      marriageMode.price === 499 ? "text-amber-300" : "text-emerald-400"
+                    }`}
+                  >
+                    ₹499
+                  </span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() =>
+                    setMarriageMode({ mode: "Detailed Chat", price: 2100 })
+                  }
+                  className={`p-2 rounded-xl border text-center transition flex flex-col items-center justify-center cursor-pointer ${
                     marriageMode.price === 2100
                       ? "border-2 border-celestial-gold bg-celestial-gold/20 shadow-[0_0_15px_rgba(246,207,122,0.25)]"
                       : "border-white/10 bg-cosmic-950/60 hover:border-white/30"
                   }`}
                 >
-                  <span className="text-[10px] text-slate-300 font-semibold mb-0.5">💬 CHAT</span>
+                  <span className="text-[9px] text-slate-300 font-semibold mb-0.5">💬 CHAT</span>
                   <span
                     className={`text-xs font-extrabold ${
                       marriageMode.price === 2100 ? "text-amber-300" : "text-emerald-400"
@@ -310,17 +368,17 @@ export default function FeaturedConsultations({ onOpenBooking }: FeaturedConsult
                   type="button"
                   onClick={() =>
                     setMarriageMode({
-                      mode: "Direct Voice Call (30 min)",
+                      mode: "Voice Call (30 min)",
                       price: 3100,
                     })
                   }
-                  className={`p-2.5 rounded-xl border text-center transition flex flex-col items-center justify-center cursor-pointer ${
+                  className={`p-2 rounded-xl border text-center transition flex flex-col items-center justify-center cursor-pointer ${
                     marriageMode.price === 3100
                       ? "border-2 border-celestial-gold bg-celestial-gold/20 shadow-[0_0_15px_rgba(246,207,122,0.25)]"
                       : "border-white/10 bg-cosmic-950/60 hover:border-white/30"
                   }`}
                 >
-                  <span className="text-[10px] text-slate-300 font-semibold mb-0.5">📞 CALL</span>
+                  <span className="text-[9px] text-slate-300 font-semibold mb-0.5">📞 CALL</span>
                   <span
                     className={`text-xs font-extrabold ${
                       marriageMode.price === 3100 ? "text-amber-300" : "text-emerald-400"
@@ -344,20 +402,14 @@ export default function FeaturedConsultations({ onOpenBooking }: FeaturedConsult
               </ul>
             </div>
 
-            <button
-              type="button"
-              onClick={() =>
-                onOpenBooking(
-                  "Marriage & Relationship Milan",
-                  marriageMode.mode,
-                  marriageMode.price
-                )
-              }
+            <a
+              href="#hero-consultation-form"
+              onClick={handleMarriageBook}
               className="w-full py-3.5 rounded-xl bg-cosmic-900 border border-celestial-gold/40 text-celestial-gold font-bold text-xs uppercase tracking-wider hover:bg-celestial-gold hover:text-cosmic-950 transition flex items-center justify-center gap-1.5 cursor-pointer"
             >
               <span>Book Marriage Reading</span>
               <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+            </a>
           </div>
         </div>
       </div>

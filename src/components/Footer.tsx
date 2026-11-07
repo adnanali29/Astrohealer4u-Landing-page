@@ -83,11 +83,6 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="#shop" className="hover:text-celestial-gold transition">
-                Sacred Apothecary
-              </a>
-            </li>
-            <li>
               <a href="#about" className="hover:text-celestial-gold transition">
                 About Garima Verma
               </a>

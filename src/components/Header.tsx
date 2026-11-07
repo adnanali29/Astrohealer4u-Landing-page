@@ -84,12 +84,6 @@ export default function Header({ onShowToast }: HeaderProps) {
             >
               Kundli
             </a>
-            <a
-              href="#shop"
-              className="text-white hover:text-celestial-gold transition whitespace-nowrap"
-            >
-              Apothecary
-            </a>
           </nav>
 
           {/* Action Hub - Book Reading CTA Button (Sound toggle removed per user request) */}
@@ -145,13 +139,6 @@ export default function Header({ onShowToast }: HeaderProps) {
               className="block text-base font-medium text-white hover:text-celestial-gold"
             >
               Kundli
-            </a>
-            <a
-              href="#shop"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-base font-medium text-white hover:text-celestial-gold"
-            >
-              Apothecary
             </a>
 
             <div className="pt-2">

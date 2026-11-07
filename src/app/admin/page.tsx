@@ -277,12 +277,8 @@ Client Name: ${b.name}
 Phone: ${b.phone}
 Email: ${b.email || "N/A"}
 Service: ${b.consultation}
-Date of Birth: ${b.dob || "N/A"}
-Time of Birth: ${b.tob || "N/A"}
-Place of Birth: ${b.pob || "N/A"}
-Appointment Date: ${b.appointmentDate || "N/A"}
-Appointment Time: ${b.appointmentTime || "N/A"}
 Status: ${b.status}
+Source: ${b.source || "Hero Form"}
 Notes: ${b.notes || "None"}`;
 
     navigator.clipboard.writeText(text);
@@ -300,12 +296,9 @@ Notes: ${b.notes || "None"}`;
       "Phone",
       "Email",
       "Consultation Service",
-      "DOB",
-      "TOB",
-      "POB",
-      "Appointment Date",
-      "Appointment Time",
       "Status",
+      "Source",
+      "Notes",
       "Booked At",
     ];
 
@@ -315,12 +308,9 @@ Notes: ${b.notes || "None"}`;
       `"${b.phone}"`,
       `"${b.email || ""}"`,
       `"${b.consultation.replace(/"/g, '""')}"`,
-      `"${b.dob || ""}"`,
-      `"${b.tob || ""}"`,
-      `"${b.pob || ""}"`,
-      `"${b.appointmentDate || ""}"`,
-      `"${b.appointmentTime || ""}"`,
       `"${b.status}"`,
+      `"${b.source || ""}"`,
+      `"${(b.notes || "").replace(/"/g, '""')}"`,
       `"${b.createdAt}"`,
     ]);
 
@@ -686,10 +676,10 @@ Notes: ${b.notes || "None"}`;
                 <thead className="bg-cosmic-950/80 border-b border-slate-800 text-[10px] uppercase tracking-wider text-slate-400 font-bold">
                   <tr>
                     <th className="py-3 px-4">Booking Ref</th>
-                    <th className="py-3 px-4">Client Details</th>
-                    <th className="py-3 px-4">Consultation Service</th>
-                    <th className="py-3 px-4">Natal Blueprint (DOB / Time / City)</th>
-                    <th className="py-3 px-4">Appointment Slot</th>
+                    <th className="py-3 px-4">Client Name</th>
+                    <th className="py-3 px-4">Phone / WhatsApp</th>
+                    <th className="py-3 px-4">Email</th>
+                    <th className="py-3 px-4">Consultation Service &amp; Mode</th>
                     <th className="py-3 px-4 text-center">Status</th>
                     <th className="py-3 px-4 text-right">Actions</th>
                   </tr>
@@ -698,7 +688,7 @@ Notes: ${b.notes || "None"}`;
                   {filteredBookings.map((b) => {
                     const cleanPhone = b.phone.replace(/[^0-9+]/g, "");
                     const whatsappMsg = encodeURIComponent(
-                      `Namaste ${b.name} Ji! This is regarding your consultation booking (${b.id}) for "${b.consultation}" with Master Astrologer Garima Verma from AstroHealer4U. We have received your birth details and would like to confirm your appointment.`
+                      `Namaste ${b.name} Ji! This is regarding your consultation booking (${b.id}) for "${b.consultation}" with Master Astrologer Garima Verma from AstroHealer4U. We have received your booking and would like to connect with you.`
                     );
                     const whatsappUrl = `https://wa.me/${cleanPhone.replace("+", "")}?text=${whatsappMsg}`;
 
@@ -724,59 +714,46 @@ Notes: ${b.notes || "None"}`;
                           </span>
                         </td>
 
-                        {/* Client Details */}
+                        {/* Client Name */}
                         <td className="py-3.5 px-4 align-top">
                           <div className="font-bold text-white text-sm">
                             {b.name}
                           </div>
-                          <div className="flex items-center gap-1.5 text-slate-300 mt-1 font-mono text-[11px]">
+                        </td>
+
+                        {/* Phone / WhatsApp */}
+                        <td className="py-3.5 px-4 align-top whitespace-nowrap">
+                          <div className="flex items-center gap-1.5 text-slate-300 font-mono text-[11px]">
                             <Phone className="w-3 h-3 text-amber-400 shrink-0" />
                             <span>{b.phone}</span>
                           </div>
-                          {b.email && (
-                            <div className="flex items-center gap-1.5 text-slate-400 mt-0.5 text-[10px]">
+                        </td>
+
+                        {/* Email */}
+                        <td className="py-3.5 px-4 align-top">
+                          {b.email ? (
+                            <div className="flex items-center gap-1.5 text-slate-400 text-[10px]">
                               <Mail className="w-3 h-3 text-slate-500 shrink-0" />
                               <span className="truncate max-w-[180px]">{b.email}</span>
                             </div>
+                          ) : (
+                            <span className="text-slate-600 text-[10px]">—</span>
                           )}
                         </td>
 
-                        {/* Consultation Service */}
+                        {/* Consultation Service & Mode */}
                         <td className="py-3.5 px-4 align-top">
-                          <span className="font-medium text-slate-200 block max-w-xs">
+                          <span className="font-medium text-slate-200 block max-w-sm">
                             {b.consultation}
                           </span>
                           <span className="inline-block mt-1 px-2 py-0.5 rounded text-[9px] font-semibold uppercase bg-slate-800 text-slate-400 border border-slate-700">
                             {b.source || "Hero Form"}
                           </span>
-                        </td>
-
-                        {/* Natal Blueprint */}
-                        <td className="py-3.5 px-4 align-top text-slate-300">
-                          <div className="flex items-center gap-1.5">
-                            <Calendar className="w-3 h-3 text-amber-400 shrink-0" />
-                            <span>DOB: <strong>{b.dob || "—"}</strong></span>
-                          </div>
-                          <div className="flex items-center gap-1.5 mt-0.5">
-                            <Clock className="w-3 h-3 text-amber-400 shrink-0" />
-                            <span>Time: <strong>{b.tob || "—"}</strong></span>
-                          </div>
-                          <div className="flex items-center gap-1.5 mt-0.5">
-                            <MapPin className="w-3 h-3 text-amber-400 shrink-0" />
-                            <span>City: <strong>{b.pob || "—"}</strong></span>
-                          </div>
-                        </td>
-
-                        {/* Appointment Slot */}
-                        <td className="py-3.5 px-4 align-top text-slate-300 whitespace-nowrap">
-                          <div className="font-medium text-amber-200 flex items-center gap-1.5">
-                            <Calendar className="w-3 h-3 text-amber-400" />
-                            <span>{b.appointmentDate || "Flexible"}</span>
-                          </div>
-                          <div className="text-[11px] text-slate-400 flex items-center gap-1.5 mt-0.5">
-                            <Clock className="w-3 h-3 text-slate-500" />
-                            <span>{b.appointmentTime || "TBD"}</span>
-                          </div>
+                          {b.notes && (
+                            <p className="text-[10px] text-slate-400 mt-1 italic">
+                              Note: {b.notes}
+                            </p>
+                          )}
                         </td>
 
                         {/* Status Dropdown Selector */}

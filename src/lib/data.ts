@@ -105,8 +105,9 @@ export const consultationsCatalog: ConsultationItem[] = [
     category: "career",
     description: "Job changes, career stagnation, corporate promotions, business partner vetting, and high-growth transit timing.",
     tiers: [
+      { mode: "Any One Question", price: 499 },
       { mode: "Detailed Chat", price: 2100 },
-      { mode: "Voice Call (30 min)", price: 3100 }
+      { mode: "Voice Call (30 min)", price: 3100 },
     ]
   },
   {
@@ -133,8 +134,9 @@ export const consultationsCatalog: ConsultationItem[] = [
     category: "relationships",
     description: "Find the right match, check Ashtakoot compatibility, solve marriage delays (Shadi me rukawat), and marital disputes.",
     tiers: [
+      { mode: "Any One Question", price: 499 },
       { mode: "Detailed Chat", price: 2100 },
-      { mode: "Voice Call (30 min)", price: 3100 }
+      { mode: "Voice Call (30 min)", price: 3100 },
     ]
   },
   {
@@ -146,8 +148,9 @@ export const consultationsCatalog: ConsultationItem[] = [
     category: "career",
     description: "Stuck with foreign PR delays (Foreign PR me dikkat), visa issues, or unsure whether overseas settlement will bring prosperity.",
     tiers: [
+      { mode: "Any One Question", price: 499 },
       { mode: "Detailed Chat", price: 2100 },
-      { mode: "Voice Call (30 min)", price: 3100 }
+      { mode: "Voice Call (30 min)", price: 3100 },
     ]
   },
   {
@@ -159,8 +162,9 @@ export const consultationsCatalog: ConsultationItem[] = [
     category: "career",
     description: "Break unexpected debt cycles (Paiso ki dikkat), unblock ancestral inheritance, and align with your wealth-giving 2nd and 11th houses.",
     tiers: [
+      { mode: "Any One Question", price: 499 },
       { mode: "Detailed Chat", price: 2100 },
-      { mode: "Voice Call (30 min)", price: 3100 }
+      { mode: "Voice Call (30 min)", price: 3100 },
     ]
   },
   {
@@ -172,8 +176,9 @@ export const consultationsCatalog: ConsultationItem[] = [
     category: "relationships",
     description: "Clear insights on 5th house Santan Bhava, hormonal karmic blockages (Pregnancy me dikkat), and auspicious conception windows.",
     tiers: [
+      { mode: "Any One Question", price: 499 },
       { mode: "Detailed Chat", price: 2100 },
-      { mode: "Voice Call (30 min)", price: 3100 }
+      { mode: "Voice Call (30 min)", price: 3100 },
     ]
   },
   {
@@ -185,8 +190,9 @@ export const consultationsCatalog: ConsultationItem[] = [
     category: "healing",
     description: "Resolve family disputes, heaviness, and commercial stagnation with zero-demolition spatial energy calibration.",
     tiers: [
+      { mode: "Any One Question", price: 499 },
       { mode: "Detailed Chat", price: 2100 },
-      { mode: "Voice Call (30 min)", price: 3100 }
+      { mode: "Voice Call (30 min)", price: 3100 },
     ]
   },
   {
@@ -198,8 +204,9 @@ export const consultationsCatalog: ConsultationItem[] = [
     category: "healing",
     description: "Empirical assessment of which stones and Mukhi beads harmonize with your Lagnesh and Yogakaraka without triggering negative side-effects.",
     tiers: [
+      { mode: "Any One Question", price: 499 },
       { mode: "Detailed Chat", price: 2100 },
-      { mode: "Voice Call (30 min)", price: 3100 }
+      { mode: "Voice Call (30 min)", price: 3100 },
     ]
   },
   {
@@ -211,8 +218,9 @@ export const consultationsCatalog: ConsultationItem[] = [
     category: "healing",
     description: "Medical astrology analysis of the 6th and 8th houses for chronic lethargy, heavy anxiety, aura depletion, and psychosomatic blocks.",
     tiers: [
+      { mode: "Any One Question", price: 499 },
       { mode: "Detailed Chat", price: 2100 },
-      { mode: "Voice Call (30 min)", price: 3100 }
+      { mode: "Voice Call (30 min)", price: 3100 },
     ]
   },
   {
@@ -224,8 +232,9 @@ export const consultationsCatalog: ConsultationItem[] = [
     category: "core",
     description: "Your comprehensive 12-month annual solar return forecast detailing month-by-month financial highs, cautions, and auspicious events.",
     tiers: [
+      { mode: "Any One Question", price: 499 },
       { mode: "Detailed Chat", price: 2100 },
-      { mode: "Voice Call (30 min)", price: 3100 }
+      { mode: "Voice Call (30 min)", price: 3100 },
     ]
   }
 ];

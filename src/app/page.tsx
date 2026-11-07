@@ -10,7 +10,6 @@ import AboutGarima from "@/components/AboutGarima";
 import ZodiacRadar from "@/components/ZodiacRadar";
 import KundliEngine from "@/components/KundliEngine";
 import FeaturedConsultations from "@/components/FeaturedConsultations";
-import SacredApothecary from "@/components/SacredApothecary";
 import Testimonials from "@/components/Testimonials";
 import FaqSection from "@/components/FaqSection";
 import DestinyCta from "@/components/DestinyCta";
@@ -20,6 +19,10 @@ import Toast from "@/components/Toast";
 
 export default function Home() {
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [heroSelection, setHeroSelection] = useState<{
+    serviceId?: string;
+    modeText?: string;
+  }>({});
   const [modalData, setModalData] = useState<BookingModalData>({
     isOpen: false,
     title: "Complete Chart Analysis",
@@ -34,21 +37,23 @@ export default function Home() {
     }, 3800);
   };
 
+  const handleConsultationSelect = (serviceId: string, modeText: string) => {
+    setHeroSelection({ serviceId, modeText });
+    const heroForm = document.getElementById("hero-consultation-form");
+    if (heroForm) {
+      heroForm.scrollIntoView({ behavior: "smooth", block: "start" });
+      const nameInput = heroForm.querySelector("input[name='name']") as HTMLInputElement | null;
+      if (nameInput) {
+        setTimeout(() => nameInput.focus(), 450);
+      }
+    }
+  };
+
   const handleOpenBooking = (title: string, mode: string, price: number) => {
     setModalData({
       isOpen: true,
       title,
       mode,
-      price,
-    });
-  };
-
-  const handleOpenOrder = (title: string, price: number) => {
-    showToast(`Selected "${title}" (₹${price.toLocaleString("en-IN")})`);
-    setModalData({
-      isOpen: true,
-      title: `Sacred Artifact: ${title}`,
-      mode: "Blessed Dispatch",
       price,
     });
   };
@@ -67,14 +72,19 @@ export default function Home() {
 
       {/* Main Content Sections */}
       <main className="relative z-10">
-        <Hero onShowToast={showToast} />
+        <Hero onShowToast={showToast} externalSelection={heroSelection} />
         <PainPoints />
-        <AllConsultations onOpenBooking={handleOpenBooking} />
+        <AllConsultations
+          onSelectConsultation={handleConsultationSelect}
+          onOpenBooking={handleOpenBooking}
+        />
         <AboutGarima />
         <ZodiacRadar onOpenBooking={handleOpenBooking} />
         <KundliEngine onShowToast={showToast} />
-        <FeaturedConsultations onOpenBooking={handleOpenBooking} />
-        <SacredApothecary onOpenOrder={handleOpenOrder} />
+        <FeaturedConsultations
+          onSelectConsultation={handleConsultationSelect}
+          onOpenBooking={handleOpenBooking}
+        />
         <Testimonials />
         <FaqSection />
         <DestinyCta />
